@@ -25,10 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-
 define ('BPFB_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)), true);
-define ('BPFB_PROTOCOL', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), true);
-
+define ('BPFB_PROTOCOL', (is_ssl() ? 'https://' : 'http://'), true);
 
 //Setup proper paths/URLs and load text domains
 if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') && file_exists(WPMU_PLUGIN_DIR . '/' . basename(__FILE__))) {
@@ -77,8 +75,6 @@ BpfbInstaller::check();
 // Require the data wrapper
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
 
-if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
-
 /**
  * Helper functions for going around the fact that
  * BuddyPress is NOT multisite compatible.
@@ -112,9 +108,22 @@ function bpfb_plugin_init () {
 		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
 	}
 	if (is_admin()) {
+		if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) {
+			global $wpmudev_notices;
+			if (!is_array($wpmudev_notices)) $wpmudev_notices = array();
+			$wpmudev_notices[] = array(
+				'id' => 232,
+				'name' => 'BuddyPress Activity Plus',
+				'screens' => array(
+					'settings_page_bpfb-settings',
+				),
+			);
+			require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
+		}
 		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
 		Bpfb_Admin::serve();
 	}
+
 	do_action('bpfb_init');
 	BpfbBinder::serve();
 }
