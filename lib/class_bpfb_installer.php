@@ -40,7 +40,7 @@ class BpfbInstaller {
 	 *
 	 * @access private
 	 */
-	function check_paths () {
+	static function check_paths () {
 		if (!file_exists(BPFB_TEMP_IMAGE_DIR)) return false;
 		if (!file_exists(BPFB_BASE_IMAGE_DIR)) return false;
 		if (!is_writable(BPFB_TEMP_IMAGE_DIR)) return false;

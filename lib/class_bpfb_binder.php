@@ -11,7 +11,7 @@ class BpfbBinder {
 	 * @access public
 	 * @static
 	 */
-	function serve () {
+	public static function serve () {
 		$me = new BpfbBinder;
 		$me->add_hooks();
 	}

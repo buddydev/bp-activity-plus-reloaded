@@ -92,7 +92,7 @@ class BpfbCodec {
 	/**
 	 * Registers shotcode processing procedures.
 	 */
-	function register () {
+	public static function register () {
 		$me = new BpfbCodec;
 		add_shortcode('bpfb_link', array($me, 'process_link_tag'));
 		add_shortcode('bpfb_video', array($me, 'process_video_tag'));
