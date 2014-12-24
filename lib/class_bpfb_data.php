@@ -10,6 +10,7 @@ class Bpfb_Data_Container {
 			'oembed_width' => 450,
 			'image_limit' => 5,
 			'links_target' => false,
+			'cleanup_images' => false,
 		));
 	}
 
