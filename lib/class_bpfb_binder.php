@@ -356,10 +356,76 @@ EOFontIconCSS;
 	}
 
 	/**
+	 * Trigger handler when BuddyPress activity is removed.
+	 * @param  array $args BuddyPress activity arguments
+	 * @return bool Insignificant
+	 */
+	function remove_activity_images ($args) {
+		if (!is_user_logged_in()) return false;
+		if (empty($args['id'])) return false;
+
+		$activity = new BP_Activity_Activity($args['id']);
+		if (!is_object($activity) || empty($activity->content)) return false;
+
+		if (!bp_activity_user_can_delete($activity)) return false;
+		if (!BpfbCodec::has_images($activity->content)) return false;
+
+		$matches = array();
+		preg_match('/\[bpfb_images\](.*?)\[\/bpfb_images\]/s', $activity->content, $matches);
+		if (empty($matches[1])) return false;
+
+		$this->_clean_up_content_images($matches[1], $activity);
+
+		return true;
+	}
+
+	/**
+	 * Callback for activity images removal
+	 * @param  string $content Shortcode content parsed for images
+	 * @param  BP_Activity_Activity Activity which contains the shortcode - used for privilege check 
+	 * @return bool
+	 */
+	private function _clean_up_content_images ($content, $activity) {
+		if (!Bpfb_Data::get('cleanup_images')) return false;
+		if (!bp_activity_user_can_delete($activity)) return false;
+
+		$images = BpfbCodec::extract_images($content);
+		if (empty($images)) return false;
+
+		foreach ($images as $image) {
+			$info = pathinfo(trim($image));
+			
+			// Make sure we have the info we need
+			if (empty($info['filename']) || empty($info['extension'])) continue;
+			
+			// Make sure we're dealing with the image
+			$ext = strtolower($info['extension']);
+			if (!in_array($ext, self::_get_supported_image_extensions())) continue;
+
+			// Construct the filenames
+			$thumbnail = bpfb_get_image_dir($activity_blog_id) . $info['filename'] . '-bpfbt.' . $ext;
+			$full = bpfb_get_image_dir($activity_blog_id) . trim($image);
+
+			// Actually remove the images
+			if (file_exists($thumbnail) && is_writable($thumbnail)) @unlink($thumbnail);
+			if (file_exists($full) && is_writable($full)) @unlink($full);
+		}
+		return true;
+	}
+
+	/**
+	 * Lists supported image extensions
+	 * @return array Supported image extensions
+	 */
+	private static function _get_supported_image_extensions () {
+		return array('jpg', 'jpeg', 'png', 'gif');
+	}
+
+	/**
 	 * This is where the plugin registers itself.
 	 */
 	function add_hooks () {
-		
+
 		add_action('init', array($this, '_add_js_css_hooks'));
 
 		// Step2: Add AJAX request handlers
@@ -374,5 +440,9 @@ EOFontIconCSS;
 		
 		// Step 3: Register and process shortcodes
 		BpfbCodec::register();
+
+		if (Bpfb_Data::get('cleanup_images')) {
+			add_action('bp_before_activity_delete', array($this, 'remove_activity_images'));
+		}
 	}
 }

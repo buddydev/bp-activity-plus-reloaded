@@ -103,4 +103,22 @@ class BpfbCodec {
 		// RSS feed processing
 		add_filter('bp_get_activity_feed_item_description', 'do_shortcode');
 	}
+
+	/**
+	 * Checks whether we have an images list shortcode in content.
+	 * @param  string $content String to check
+	 * @return boolean
+	 */
+	public static function has_images ($content) {
+		return has_shortcode($content, 'bpfb_images');
+	}
+
+	/**
+	 * Extracts images from shortcode content.
+	 * @param  string $shortcode_content Shortcode contents
+	 * @return array
+	 */
+	public static function extract_images ($shortcode_content) {
+		return explode("\n", trim(strip_tags($shortcode_content)));
+	}
 }
