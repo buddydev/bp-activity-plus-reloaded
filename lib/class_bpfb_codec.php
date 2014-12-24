@@ -61,7 +61,7 @@ class BpfbCodec {
 	 * Relies on ./forms/images_tag_template.php for markup rendering.
 	 */
 	function process_images_tag ($atts, $content) {
-		$images = explode("\n", trim(strip_tags($content)));
+		$images = self::extract_images($content);
 		//return var_export($images,1);
 		$activity_id = bp_get_activity_id();
 		global $blog_id;

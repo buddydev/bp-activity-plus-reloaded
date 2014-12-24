@@ -245,7 +245,7 @@ EOFontIconCSS;
 	function ajax_preview_photo () {
 		$dir = BPFB_PLUGIN_BASE_DIR . '/img/';
 		if (!class_exists('qqFileUploader')) require_once(BPFB_PLUGIN_BASE_DIR . '/lib/external/file_uploader.php');
-		$uploader = new qqFileUploader(array('jpg', 'jpeg', 'png', 'gif'));
+		$uploader = new qqFileUploader(self::_get_supported_image_extensions());
 		$result = $uploader->handleUpload(BPFB_TEMP_IMAGE_DIR);
 		//header('Content-type: application/json'); // For some reason, IE doesn't like this. Skip.
 		echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
@@ -282,10 +282,10 @@ EOFontIconCSS;
 		$bpfb_code = $activity = '';
 		$aid = 0;
 		$codec = new BpfbCodec;
-		if (@$_POST['data']['bpfb_video_url']) {
+		if (!empty($_POST['data']['bpfb_video_url'])) {
 			$bpfb_code = $codec->create_video_tag($_POST['data']['bpfb_video_url']);
 		}
-		if (@$_POST['data']['bpfb_link_url']) {
+		if (!empty($_POST['data']['bpfb_link_url'])) {
 			$bpfb_code = $codec->create_link_tag(
 				$_POST['data']['bpfb_link_url'],
 				$_POST['data']['bpfb_link_title'],
@@ -293,7 +293,7 @@ EOFontIconCSS;
 				$_POST['data']['bpfb_link_image']
 			);
 		}
-		if (@$_POST['data']['bpfb_photos']) {
+		if (!empty($_POST['data']['bpfb_photos'])) {
 			$images = $this->move_images($_POST['data']['bpfb_photos']);
 			$bpfb_code = $codec->create_images_tag($images);
 		}
