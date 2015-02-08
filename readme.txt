@@ -48,6 +48,10 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 
 == Changelog ==
 
+= 1.6.2 =
+- Fix for group document uploads.
+- Some cleanup.
+
 = 1.6.1 =
 - Added ability to auto-clean up unused images.
 - Some code tweaks and fixes.
