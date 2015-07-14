@@ -36,7 +36,10 @@ class BpfbCodec {
 	function create_link_tag ($url, $title, $body='', $image='') {
 		if (!$url) return '';
 		$body = $body ? $body : $title;
-		return "[bpfb_link url='${url}' title='{$title}' image='{$image}']{$body}[/bpfb_link]";
+		$title = esc_attr($title);
+		$image = esc_url($image);
+		$url = esc_url($url);
+		return "[bpfb_link url='{$url}' title='{$title}' image='{$image}']{$body}[/bpfb_link]";
 	}
 
 	/**
@@ -53,6 +56,7 @@ class BpfbCodec {
 	function create_video_tag ($url) {
 		if (!$url) return '';
 		$url = preg_match('/^https?:\/\//i', $url) ? $url : BPFB_PROTOCOL . $url;
+		$url = esc_url($url);
 		return "[bpfb_video]{$url}[/bpfb_video]";
 	}
 
