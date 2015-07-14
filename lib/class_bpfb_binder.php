@@ -75,6 +75,40 @@ class BpfbBinder {
 	}
 
 	/**
+	 * Sanitizes the path and expands it into full form.
+	 *
+	 * @param string $file Relative file path
+	 *
+	 * @return mixed Sanitized path, or (bool)false on failure
+	 */
+	public static function resolve_temp_path ($file) {
+		$file = ltrim($file, '/');
+		
+		// No subdirs in path, so we can do this quick check too
+		if ($file !== basename($file)) return false;
+
+		$tmp_path = trailingslashit(wp_normalize_path(realpath(BPFB_TEMP_IMAGE_DIR)));
+		if (empty($tmp_path)) return false;
+
+		$full_path = wp_normalize_path(realpath($tmp_path . $file));
+		if (empty($full_path)) return false;
+
+		// Are we still within our defined TMP dir?
+		$rx = preg_quote($tmp_path, '/');
+		$full_path = preg_match("/^{$rx}/", $full_path)
+			? $full_path
+			: false
+		;
+		if (empty($full_path)) return false;
+
+		// Also, does this resolve to an actual file?
+		return file_exists($full_path)
+			? $full_path
+			: false
+		;
+	}
+
+	/**
 	 * Remote page retrieving routine.
 	 *
 	 * @param string Remote URL
@@ -269,7 +303,8 @@ EOFontIconCSS;
 		parse_str($_POST['data'], $data);
 		$data = is_array($data) ? $data : array('bpfb_photos'=>array());
 		foreach ($data['bpfb_photos'] as $file) {
-			@unlink (BPFB_TEMP_IMAGE_DIR . $file);
+			$path = self::resolve_temp_path($file);
+			if (!empty($path)) @unlink($path);
 		}
 		echo json_encode(array('status'=>'ok'));
 		exit();

@@ -129,7 +129,8 @@ class Bpfb_Documents {
 		parse_str($_POST['data'], $data);
 		$data = is_array($data) ? $data : array('bpfb_documents'=>array());
 		foreach ($data['bpfb_documents'] as $file) {
-			@unlink (BPFB_TEMP_IMAGE_DIR . $file);
+			$path = BpfbBinder::resolve_temp_path($file);
+			if (!empty($path)) @unlink($path);
 		}
 		echo json_encode(array('status'=>'ok'));
 		exit();
