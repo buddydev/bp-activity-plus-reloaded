@@ -25,24 +25,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define ('BPFB_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)), true);
-define ('BPFB_PROTOCOL', (is_ssl() ? 'https://' : 'http://'), true);
+define ('BPFB_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)));
+define ('BPFB_PROTOCOL', (is_ssl() ? 'https://' : 'http://'));
 
 //Setup proper paths/URLs and load text domains
 if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') && file_exists(WPMU_PLUGIN_DIR . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'mu-plugins', true);
-	define ('BPFB_PLUGIN_BASE_DIR', WPMU_PLUGIN_DIR, true);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WPMU_PLUGIN_URL), true);
+	define ('BPFB_PLUGIN_LOCATION', 'mu-plugins');
+	define ('BPFB_PLUGIN_BASE_DIR', WPMU_PLUGIN_DIR);
+	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WPMU_PLUGIN_URL));
 	$textdomain_handler = 'load_muplugin_textdomain';
 } else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . BPFB_PLUGIN_SELF_DIRNAME . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'subfolder-plugins', true);
-	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR . '/' . BPFB_PLUGIN_SELF_DIRNAME, true);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL) . '/' . BPFB_PLUGIN_SELF_DIRNAME, true);
+	define ('BPFB_PLUGIN_LOCATION', 'subfolder-plugins');
+	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR . '/' . BPFB_PLUGIN_SELF_DIRNAME);
+	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL) . '/' . BPFB_PLUGIN_SELF_DIRNAME);
 	$textdomain_handler = 'load_plugin_textdomain';
 } else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'plugins', true);
-	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR, true);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL), true);
+	define ('BPFB_PLUGIN_LOCATION', 'plugins');
+	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR);
+	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL));
 	$textdomain_handler = 'load_plugin_textdomain';
 } else {
 	// No textdomain is loaded because we can't determine the plugin location.
@@ -54,16 +54,16 @@ $textdomain_handler('bpfb', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/');
 // Override oEmbed width in wp-config.php
 //if (!defined('BPFB_OEMBED_WIDTH')) define('BPFB_OEMBED_WIDTH', 450, true); // Don't define by default
 // Override image limit in wp-config.php
-if (!defined('BPFB_IMAGE_LIMIT')) define('BPFB_IMAGE_LIMIT', 5, true);
+if (!defined('BPFB_IMAGE_LIMIT')) define('BPFB_IMAGE_LIMIT', 5);
 // Override link target preference in wp-config.php
-if (!defined('BPFB_LINKS_TARGET')) define('BPFB_LINKS_TARGET', false, true);
+if (!defined('BPFB_LINKS_TARGET')) define('BPFB_LINKS_TARGET', false);
 
 
 $wp_upload_dir = wp_upload_dir();
-define('BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/', true);
-define('BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/', true);
-define('BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/', true);
-define('BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/', true);
+define('BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/');
+define('BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/');
+define('BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/');
+define('BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/');
 
 
 
