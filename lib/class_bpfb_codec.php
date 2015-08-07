@@ -35,11 +35,28 @@ class BpfbCodec {
 	 */
 	function create_link_tag ($url, $title, $body='', $image='') {
 		if (!$url) return '';
-		$body = $body ? $body : $title;
+		$title = $this->_escape_shortcode($title);
+		$body = !empty($body) ? $this->_escape_shortcode($body) : $title;
 		$title = esc_attr($title);
 		$image = esc_url($image);
 		$url = esc_url($url);
 		return "[bpfb_link url='{$url}' title='{$title}' image='{$image}']{$body}[/bpfb_link]";
+	}
+
+	/**
+	 * Escape shortcode-breaking characters.
+	 *
+	 * @param string $string String to process
+	 *
+	 * @return string
+	 */
+	private function _escape_shortcode ($string='') {
+		if (empty($string)) return $string;
+
+		$string = preg_replace('/' . preg_quote('[', '/') . '/', '&#91;', $string);
+		$string = preg_replace('/' . preg_quote(']', '/') . '/', '&#93;', $string);
+
+		return $string;
 	}
 
 	/**
