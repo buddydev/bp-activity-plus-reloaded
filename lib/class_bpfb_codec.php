@@ -111,6 +111,22 @@ class BpfbCodec {
 	}
 
 	/**
+	 * Wrap shortcode execution in a quick check.
+	 *
+	 * @param string $content Content to check for shortcode and process accordingly
+	 *
+	 * @return string
+	 */
+	public function do_shortcode ($content='') {
+		if (false === strpos($content, '[bpfb_')) return $content;
+
+		remove_filter('bp_get_activity_content_body', 'stripslashes_deep', 5); // Drop this because we'll be doing this right now
+		$content = stripslashes_deep($content); // ... and process immediately, before allowing shortcode processing
+
+		return do_shortcode($content);
+	}
+
+	/**
 	 * Registers shotcode processing procedures.
 	 */
 	public static function register () {
@@ -120,7 +136,7 @@ class BpfbCodec {
 		add_shortcode('bpfb_images', array($me, 'process_images_tag'));
 
 		// A fix for Ray's "oEmbed for BuddyPress" and similar plugins
-		add_filter('bp_get_activity_content_body', 'do_shortcode', 1);
+		add_filter('bp_get_activity_content_body', array($me, 'do_shortcode'), 1);
 		// RSS feed processing
 		add_filter('bp_get_activity_feed_item_description', 'do_shortcode');
 	}
