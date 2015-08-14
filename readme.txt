@@ -2,8 +2,8 @@
 Contributors: WPMUDEV
 Tags: BuddyPress, Activity, Activity Stream, BuddyPress Activity, Wall, Embed, Media, Youtube, Photos, Facebook, Social Network, Social Networking, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Network Wall, Social Media
 Requires at least: 3.1
-Tested up to: 4.2.2
-Stable tag: 1.6.2
+Tested up to: 4.2.4
+Stable tag: 1.6.3
 
 BuddyPress Activity Plus allows for embedding of oEmbed videos and media in your activities.
 
@@ -47,6 +47,10 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 4. Video in your activity stream
 
 == Changelog ==
+
+= 1.6.3 =
+- Fix for link contents render after editing.
+- Fix for certain characters cutting shortcode too short.
 
 = 1.6.2 =
 - Fix for group document uploads.
