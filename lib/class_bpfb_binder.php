@@ -39,7 +39,7 @@ class BpfbBinder {
 			$processed++;
 			if (BPFB_IMAGE_LIMIT && $processed > BPFB_IMAGE_LIMIT) break; // Do not even bother to process more.
 			if (preg_match('!^https?:\/\/!i', $img)) { // Just add remote images
-				$ret[] = $img;
+				$ret[] = esc_url($img);
 				continue;
 			}
 			
@@ -290,8 +290,11 @@ EOFontIconCSS;
 	 */
 	function ajax_preview_remote_image () {
 		header('Content-type: application/json');
-		$data = !empty($_POST['data']) ? esc_url($_POST['data']) : false;
-		echo json_encode($_POST['data']);
+		$data = !empty($_POST['data']) ?
+			(is_array($_POST['data']) ? array_map('esc_url', $_POST['data']) : esc_url($_POST['data']))
+			: false
+		;
+		echo json_encode($data);
 		exit();
 	}
 
