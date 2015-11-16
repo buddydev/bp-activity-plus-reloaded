@@ -383,7 +383,7 @@ EOFontIconCSS;
 
 		global $bp;
 
-		if (
+		$show_condition = (bool)(
 			// Load the scripts on Activity pages
 			(defined('BP_ACTIVITY_SLUG') && bp_is_activity_component())
 			||
@@ -392,7 +392,11 @@ EOFontIconCSS;
 			||
 			// Load the script on Group home page
 			(defined('BP_GROUPS_SLUG') && bp_is_groups_component() && 'home' == $bp->current_action)
-		) {
+			||
+			apply_filters('bpfb_injection_additional_condition', false)
+		);
+
+		if (apply_filters('bpfb_inject_dependencies', $show_condition)) {
 			// Step1: Load JS/CSS requirements
 			add_action('wp_enqueue_scripts', array($this, 'js_load_scripts'));
 			add_action('wp_print_scripts', array($this, 'js_plugin_url'));
