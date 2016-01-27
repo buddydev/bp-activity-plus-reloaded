@@ -332,6 +332,8 @@ EOFontIconCSS;
 					$_POST['data']['bpfb_link_body'],
 					$_POST['data']['bpfb_link_image']
 				);
+
+				add_filter( 'bp_bypass_check_for_moderation', array( $this, 'bp_activity_link_moderation_custom'), 10, 4 );
 			}
 			if (!empty($_POST['data']['bpfb_photos'])) {
 				$images = $this->move_images($_POST['data']['bpfb_photos']);
@@ -495,5 +497,109 @@ EOFontIconCSS;
 		if (Bpfb_Data::get('cleanup_images')) {
 			add_action('bp_before_activity_delete', array($this, 'remove_activity_images'));
 		}
+	}
+
+	/**
+	 * Bypass default wp moderation to tweak link count in post content.
+	 */
+	function bp_activity_link_moderation_custom( $bypass, $user_id, $title, $content ){
+		// Define local variable(s)
+		$_post     = array();
+		$match_out = '';
+
+		/** User Data *************************************************************/
+
+		if ( ! empty( $user_id ) ) {
+
+			// Get author data
+			$user = get_userdata( $user_id );
+
+			// If data exists, map it
+			if ( ! empty( $user ) ) {
+				$_post['author'] = $user->display_name;
+				$_post['email']  = $user->user_email;
+				$_post['url']    = $user->user_url;
+			}
+		}
+
+		// Current user IP and user agent
+		$_post['user_ip'] = bp_core_current_user_ip();
+		$_post['user_ua'] = bp_core_current_user_ua();
+
+		// Post title and content
+		$_post['title']   = $title;
+		$_post['content'] = $content;
+
+		/** Max Links *************************************************************/
+
+		$max_links = get_option( 'comment_max_links' );
+		if ( ! empty( $max_links ) ) {
+
+			$temp_content = str_replace(array("image='http", "image=\"http"), "", $content );
+			// How many links?
+			$num_links = preg_match_all( '/(http|ftp|https):\/\//i', $temp_content, $match_out );
+
+			// Allow for bumping the max to include the user's URL
+			if ( ! empty( $_post['url'] ) ) {
+
+				/**
+				 * Filters the maximum amount of links allowed to include the user's URL.
+				 *
+				 * @since 1.6.0
+				 *
+				 * @param string $num_links How many links found.
+				 * @param string $value     User's url.
+				 */
+				$num_links = apply_filters( 'comment_max_links_url', $num_links, $_post['url'] );
+			}
+
+			// Das ist zu viele links!
+			if ( $num_links >= $max_links ) {
+				return false;
+			}
+		}
+
+		/** Blacklist *************************************************************/
+
+		// Get the moderation keys
+		$blacklist = trim( get_option( 'moderation_keys' ) );
+
+		// Bail if blacklist is empty
+		if ( ! empty( $blacklist ) ) {
+
+			// Get words separated by new lines
+			$words = explode( "\n", $blacklist );
+
+			// Loop through words
+			foreach ( (array) $words as $word ) {
+
+				// Trim the whitespace from the word
+				$word = trim( $word );
+
+				// Skip empty lines
+				if ( empty( $word ) ) {
+					continue;
+				}
+
+				// Do some escaping magic so that '#' chars in the
+				// spam words don't break things:
+				$word    = preg_quote( $word, '#' );
+				$pattern = "#$word#i";
+
+				// Loop through post data
+				foreach ( $_post as $post_data ) {
+
+					// Check each user data for current word
+					if ( preg_match( $pattern, $post_data ) ) {
+
+						// Post does not pass
+						return false;
+					}
+				}
+			}
+		}
+
+		// Check passed successfully
+		return true;
 	}
 }
