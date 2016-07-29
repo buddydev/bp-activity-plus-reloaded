@@ -416,6 +416,9 @@ EOFontIconCSS;
 	function remove_activity_images ($args) {
 		if (!is_user_logged_in()) return false;
 		if (empty($args['id'])) return false;
+		
+		// Compatibility with BP Reshare
+		if ($args['type'] == 'reshare_update') return false; 
 
 		$activity = new BP_Activity_Activity($args['id']);
 		if (!is_object($activity) || empty($activity->content)) return false;
