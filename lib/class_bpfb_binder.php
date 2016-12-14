@@ -117,6 +117,10 @@ class BpfbBinder {
 	function get_page_contents ($url) {
 		$response = wp_remote_get($url);
 		if (is_wp_error($response)) return false;
+
+		$status = wp_remote_retrieve_response_code($response);
+		if (200 !== (int)$status) return false;
+
 		return $response['body'];
 	}
 
