@@ -115,7 +115,9 @@ class BpfbBinder {
 	 * @access private
 	 */
 	function get_page_contents ($url) {
-		$response = wp_remote_get($url);
+		$response = wp_remote_get($url, array(
+			'user-agent' => 'BuddyPress Activity Plus', // Some sites will block default WP UA
+		));
 		if (is_wp_error($response)) return false;
 
 		$status = wp_remote_retrieve_response_code($response);
