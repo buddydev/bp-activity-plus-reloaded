@@ -108,7 +108,7 @@ function bpfb_plugin_init () {
 		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
 	}
 	if (is_admin()) {
-		if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) {
+		if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php')) {
 			global $wpmudev_notices;
 			if (!is_array($wpmudev_notices)) $wpmudev_notices = array();
 			$wpmudev_notices[] = array(
@@ -118,7 +118,7 @@ function bpfb_plugin_init () {
 					'settings_page_bpfb-settings',
 				),
 			);
-			require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
+			require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php';
 		}
 		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
 		Bpfb_Admin::serve();
