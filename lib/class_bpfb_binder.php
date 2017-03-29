@@ -563,7 +563,7 @@ EOFontIconCSS;
 			}
 
 			// Das ist zu viele links!
-			if ( $num_links >= $max_links ) {
+			if ( ( $num_links >= $max_links ) && $num_links != 1 ) {
 				return false;
 			}
 		}
