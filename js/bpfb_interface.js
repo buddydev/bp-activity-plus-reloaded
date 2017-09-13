@@ -377,7 +377,7 @@ var BpfbPhotoHandler = function () {
 function createMarkup () {
 	var html = '<div class="bpfb_actions_container bpfb-theme-' + _bpfb_data.theme.replace(/[^-_a-z0-9]/ig, '') + ' bpfb-alignment-' + _bpfb_data.alignment.replace(/[^-_a-z0-9]/ig, '') + '">' +
 		'<div class="bpfb_toolbar_container">' +
-			'<a href="#photos" class="bpfb_toolbarItem" title="' + l10nBpfb.add_photos + '" id="bpfb_addPhotos"><span>' + l10nBpfb.add_photos + '</span></a>' +
+			'<a href="#photos" class="bpfb_toolbarItem" title="' + l10nBpfb.add_photos_tip + '" id="bpfb_addPhotos"><span>' + l10nBpfb.add_photos + '</span></a>' +
 			'&nbsp;' +
 			'<a href="#videos" class="bpfb_toolbarItem" title="' + l10nBpfb.add_videos + '" id="bpfb_addVideos"><span>' + l10nBpfb.add_videos + '</span></a>' +
 			'&nbsp;' +

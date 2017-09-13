@@ -1,34 +1,33 @@
+# Copyright (C) 2017 
+# This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Activity Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-24 10:53+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: en\n"
+"POT-Creation-Date: 2017-09-13 04:34:37+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: _e;__\n"
-"X-Poedit-Basepath: d:/xampp/htdocs/bpfb/wp-content/plugins/bpfb_the_edge/\n"
-"X-Generator: Poedit 1.6.10\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: lib\n"
-"X-Poedit-SearchPath-1: lib/forms\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n1.0.0\n"
 
-#: lib/bpfb_group_documents.php:31
-#, fuzzy
+#: bpfb.php:50
+msgid ""
+"There was an issue determining where BuddyPress Activity Plus plugin is "
+"installed. Please reinstall."
+msgstr ""
+
+#: lib/bpfb_group_documents.php:48
 msgid "Add documents"
-msgstr "Add photos"
+msgstr ""
 
-#: lib/bpfb_group_documents.php:32
+#: lib/bpfb_group_documents.php:49
 msgid "Please select a group to upload to"
 msgstr ""
 
-#: lib/bpfb_group_documents.php:184
-#, php-format
+#: lib/bpfb_group_documents.php:201
 msgid "%s uploaded new file(s): %s to %s"
 msgstr ""
 
@@ -46,9 +45,9 @@ msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:96
 msgid ""
-"Your BuddyPress theme incorporates Activity Plus style overrides. Respecting "
-"the selection you make in the &quot;Appearance&quot; section is entirely up "
-"to your theme."
+"Your BuddyPress theme incorporates Activity Plus style overrides. "
+"Respecting the selection you make in the &quot;Appearance&quot; section is "
+"entirely up to your theme."
 msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:101
@@ -88,10 +87,10 @@ msgid "oEmbed"
 msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:139
-#, php-format
 msgid ""
-"Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</"
-"code> define value (%s). Remove this define to enable this option."
+"Your oEmbed dimensions will be dictated by the "
+"<code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to "
+"enable this option."
 msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:143 lib/class_bpfb_admin_pages.php:155
@@ -99,16 +98,14 @@ msgid "Width"
 msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:148
-#, fuzzy
 msgid "Image thumbnails"
-msgstr "Choose thumbnail"
+msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:151
-#, php-format
 msgid ""
 "Your thumbnail dimensions will be dictated by the "
-"<code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define "
-"to enable these options."
+"<code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this "
+"define to enable these options."
 msgstr ""
 
 #: lib/class_bpfb_admin_pages.php:159
@@ -127,80 +124,82 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:135
-msgid "Add photos"
-msgstr "Add photos"
+#: lib/class_bpfb_binder.php:174
+msgid "Add images"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:136
+#: lib/class_bpfb_binder.php:175
+msgid "Submit images post"
+msgstr ""
+
+#: lib/class_bpfb_binder.php:176
 msgid "Add image URL"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:137
+#: lib/class_bpfb_binder.php:177
 msgid "Add another image URL"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:138
+#: lib/class_bpfb_binder.php:178
 msgid "Add videos"
-msgstr "Add videos"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:139
-msgid "Add video"
-msgstr "Add video"
+#: lib/class_bpfb_binder.php:179
+msgid "Submit video post"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:140
+#: lib/class_bpfb_binder.php:180
 msgid "Add links"
-msgstr "Add links"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:141
-msgid "Add link"
-msgstr "Add link"
+#: lib/class_bpfb_binder.php:181
+msgid "Submit link post"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:142
+#: lib/class_bpfb_binder.php:182
 msgid "Add"
-msgstr "Add"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:143
+#: lib/class_bpfb_binder.php:183
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:144
+#: lib/class_bpfb_binder.php:184
 msgid "Preview"
-msgstr "Preview"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:145
+#: lib/class_bpfb_binder.php:185
 msgid "Drop files here to upload"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:146
+#: lib/class_bpfb_binder.php:186
 msgid "Upload a file"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:147
+#: lib/class_bpfb_binder.php:187
 msgid "Choose thumbnail"
-msgstr "Choose thumbnail"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:148
-#, fuzzy
+#: lib/class_bpfb_binder.php:188
 msgid "No thumbnail"
-msgstr "Choose thumbnail"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:149
+#: lib/class_bpfb_binder.php:189
 msgid "Paste video URL here"
-msgstr "Paste video URL here"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:150
+#: lib/class_bpfb_binder.php:190
 msgid "Paste link here"
-msgstr "Paste link here"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:151
-#, php-format
+#: lib/class_bpfb_binder.php:191
 msgid "You tried to add too many images, only %d will be posted."
 msgstr ""
 
-#: lib/class_bpfb_binder.php:177 lib/class_bpfb_binder.php:194
+#: lib/class_bpfb_binder.php:217 lib/class_bpfb_binder.php:234
 msgid "There has been an error processing your request"
-msgstr "There has been an error processing your request"
+msgstr ""
 
-#: lib/class_bpfb_binder.php:178 lib/class_bpfb_binder.php:195
+#: lib/class_bpfb_binder.php:218 lib/class_bpfb_binder.php:235
 msgid "Processing..."
-msgstr "Processing..."
+msgstr ""

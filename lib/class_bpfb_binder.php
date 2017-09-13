@@ -171,13 +171,14 @@ EOFontIconCSS;
 		}
 		wp_enqueue_script('bpfb_interface_script', BPFB_PLUGIN_URL . '/js/bpfb_interface.js', array('jquery'));
 		wp_localize_script('bpfb_interface_script', 'l10nBpfb', array(
-			'add_photos' => __('Add photos', 'bpfb'),
+			'add_photos_tip' => __('Add images', 'bpfb'),
+			'add_photos' => __('Submit images post', 'bpfb'),
 			'add_remote_image' => __('Add image URL', 'bpfb'),
 			'add_another_remote_image' => __('Add another image URL', 'bpfb'),
 			'add_videos' => __('Add videos', 'bpfb'),
-			'add_video' => __('Add video', 'bpfb'),
+			'add_video' => __('Submit video post', 'bpfb'),
 			'add_links' => __('Add links', 'bpfb'),
-			'add_link' => __('Add link', 'bpfb'),
+			'add_link' => __('Submit link post', 'bpfb'),
 			'add' => __('Add', 'bpfb'),
 			'cancel' => __('Cancel', 'bpfb'),
 			'preview' => __('Preview', 'bpfb'),
