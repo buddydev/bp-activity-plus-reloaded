@@ -1,0 +1,15 @@
+{
+  "name": "activity-plus",
+  "version": "1.6.5",
+  "description": "A Facebook-style media sharing improvement for the activity box.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WPMU DEV",
+  "license": "GPL",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-wp-i18n": "^1.0.0"
+  }
+}
