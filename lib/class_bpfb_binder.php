@@ -372,8 +372,7 @@ EOFontIconCSS;
 			if ( bp_has_activities ( 'include=' . $aid ) ) {
 				while ( bp_activities() ) {
 					bp_the_activity();
-					if (function_exists('bp_locate_template')) bp_locate_template( array( 'activity/entry.php' ), true );
-					else locate_template( array( 'activity/entry.php' ), true );
+					bp_get_template_part( 'activity/entry' );
 				}
 			}
 			$activity = ob_get_clean();
