@@ -433,6 +433,8 @@ function init () {
 		$(this).addClass("bpfb_active");
 	});
 	$(document).on('click', '#bpfb_submit', function () {
+		var $stream = $('#activity-stream'),
+			$list = $stream.find('.activity-list');
 		var params = _bpfbActiveHandler.get();
 		var group_id = $('#whats-new-post-in').length ? $('#whats-new-post-in').val() : 0;
 		$.post(ajaxurl, {
@@ -443,7 +445,11 @@ function init () {
 		}, function (data) {
 			_bpfbActiveHandler.destroy();
 			$text.val('');
-			$('#activity-stream').prepend(data.activity);
+			if ($list.length) {
+				$list.prepend(data.activity);
+			} else {
+				$stream.prepend(data.activity);
+			}
 			/**
 			 * Handle image scaling in previews.
 			 */
