@@ -64,25 +64,12 @@ require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
 function bpfb_plugin_init() {
 	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_binder.php' );
 	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_codec.php' );
-	// Group Documents integration
+	// Group Documents integration.
 	if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
 		require_once( BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php' );
 	}
+
 	if ( is_admin() ) {
-		if ( file_exists( BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php' ) ) {
-			global $wpmudev_notices;
-			if ( ! is_array( $wpmudev_notices ) ) {
-				$wpmudev_notices = array();
-			}
-			$wpmudev_notices[] = array(
-				'id'      => 232,
-				'name'    => 'BuddyPress Activity Plus',
-				'screens' => array(
-					'settings_page_bpfb-settings',
-				),
-			);
-			require_once BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php';
-		}
 		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
 		Bpfb_Admin::serve();
 	}
