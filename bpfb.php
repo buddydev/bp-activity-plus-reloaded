@@ -57,6 +57,9 @@ require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data-container.php';
 require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data.php';
 require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
 
+require_once BPFB_PLUGIN_BASE_DIR . '/src/bootstrap/class-bp-apr-assets-loader.php';
+
+BPAPR_Assets_Loader::boot();
 
 /**
  * Includes the core requirements and serves the improved activity box.

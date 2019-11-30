@@ -12,8 +12,8 @@ class BpfbBinder {
 	 * @static
 	 */
 	public static function serve () {
-		$me = new BpfbBinder;
-		$me->add_hooks();
+		$self = new BpfbBinder;
+		$self->add_hooks();
 	}
 
 	/**
@@ -132,87 +132,6 @@ class BpfbBinder {
 		return $response['body'];
 	}
 
-	/**
-	 * Introduces `plugins_url()` and other significant URLs as root variables (global).
-	 */
-	function js_plugin_url () {
-		$data = apply_filters(
-			'bpfb_js_data_object',
-			array(
-				'root_url' => BPFB_PLUGIN_URL,
-				'temp_img_url' => BPFB_TEMP_IMAGE_URL,
-				'base_img_url' => BPFB_BASE_IMAGE_URL,
-				'theme' => BPFB_Data::get('theme', 'default'),
-				'alignment' => BPFB_Data::get('alignment', 'left'),
-			)
-		);
-		printf('<script type="text/javascript">var _bpfb_data=%s;</script>', json_encode($data));
-		if ('default' != $data['theme'] && !current_theme_supports('bpfb_toolbar_icons')) {
-			$url = BPFB_PLUGIN_URL;
-			echo <<<EOFontIconCSS
-<style type="text/css">
-@font-face {
-	font-family: 'bpfb';
-	src:url('{$url}/css/external/font/bpfb.eot');
-	src:url('{$url}/css/external/font/bpfb.eot?#iefix') format('embedded-opentype'),
-		url('{$url}/css/external/font/bpfb.woff') format('woff'),
-		url('{$url}/css/external/font/bpfb.ttf') format('truetype'),
-		url('{$url}/css/external/font/bpfb.svg#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-</style>
-EOFontIconCSS;
-		}
-	}
-
-	/**
-	 * Loads needed scripts and l10n strings for JS.
-	 */
-	function js_load_scripts () {
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('thickbox');
-		if (!current_theme_supports('bpfb_file_uploader')) {
-			wp_enqueue_script('file_uploader', BPFB_PLUGIN_URL . '/js/external/fileuploader.js', array('jquery'));
-		}
-		wp_enqueue_script('bpfb_interface_script', BPFB_PLUGIN_URL . '/js/bpfb_interface.js', array('jquery'));
-		wp_localize_script('bpfb_interface_script', 'l10nBpfb', array(
-			'add_photos_tip' => __('Add images', 'bpfb'),
-			'add_photos' => __('Submit images post', 'bpfb'),
-			'add_remote_image' => __('Add image URL', 'bpfb'),
-			'add_another_remote_image' => __('Add another image URL', 'bpfb'),
-			'add_videos' => __('Add videos', 'bpfb'),
-			'add_video' => __('Submit video post', 'bpfb'),
-			'add_links' => __('Add links', 'bpfb'),
-			'add_link' => __('Submit link post', 'bpfb'),
-			'add' => __('Add', 'bpfb'),
-			'cancel' => __('Cancel', 'bpfb'),
-			'preview' => __('Preview', 'bpfb'),
-			'drop_files' => __('Drop files here to upload', 'bpfb'),
-			'upload_file' => __('Upload a file', 'bpfb'),
-			'choose_thumbnail' => __('Choose thumbnail', 'bpfb'),
-			'no_thumbnail' => __('No thumbnail', 'bpfb'),
-			'paste_video_url' => __('Paste video URL here', 'bpfb'),
-			'paste_link_url' => __('Paste link here', 'bpfb'),
-			'images_limit_exceeded' => sprintf(__("You tried to add too many images, only %d will be posted.", 'bpfb'), BPFB_IMAGE_LIMIT),
-			// Variables
-			'_max_images' => BPFB_IMAGE_LIMIT,
-		));
-	}
-
-	/**
-	 * Loads required styles.
-	 */
-	function css_load_styles () {
-		wp_enqueue_style('thickbox');
-		wp_enqueue_style('file_uploader_style', BPFB_PLUGIN_URL . '/css/external/fileuploader.css');
-		if (!current_theme_supports('bpfb_interface_style')) {
-			wp_enqueue_style('bpfb_interface_style', BPFB_PLUGIN_URL . '/css/bpfb_interface.css');
-		}
-		if (!current_theme_supports('bpfb_toolbar_icons')) {
-			wp_enqueue_style('bpfb_toolbar_icons', BPFB_PLUGIN_URL . '/css/bpfb_toolbar.css');
-		}
-	}
 
 	/**
 	 * Handles video preview requests.
@@ -392,33 +311,7 @@ EOFontIconCSS;
 		exit();
 	}
 
-	function _add_js_css_hooks () {
-		if (!is_user_logged_in()) return false;
 
-		global $bp;
-
-		$show_condition = (bool)(
-			// Load the scripts on Activity pages
-			(defined('BP_ACTIVITY_SLUG') && bp_is_activity_component())
-			||
-			// Load the scripts when Activity page is the Home page
-			(defined('BP_ACTIVITY_SLUG') && 'page' == get_option('show_on_front') && is_front_page() && BP_ACTIVITY_SLUG == get_option('page_on_front'))
-			||
-			// Load the script on Group home page
-			(defined('BP_GROUPS_SLUG') && bp_is_groups_component() && 'home' == $bp->current_action)
-			||
-			apply_filters('bpfb_injection_additional_condition', false)
-		);
-
-		if (apply_filters('bpfb_inject_dependencies', $show_condition)) {
-			// Step1: Load JS/CSS requirements
-			add_action('wp_enqueue_scripts', array($this, 'js_load_scripts'));
-			add_action('wp_print_scripts', array($this, 'js_plugin_url'));
-			add_action('wp_print_styles', array($this, 'css_load_styles'));
-
-			do_action('bpfb_add_cssjs_hooks');
-		}
-	}
 
 	/**
 	 * Trigger handler when BuddyPress activity is removed.
@@ -493,8 +386,6 @@ EOFontIconCSS;
 	 * This is where the plugin registers itself.
 	 */
 	function add_hooks () {
-
-		add_action('init', array($this, '_add_js_css_hooks'));
 
 		// Step2: Add AJAX request handlers
 		add_action('wp_ajax_bpfb_preview_video', array($this, 'ajax_preview_video'));

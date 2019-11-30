@@ -119,3 +119,6 @@ Here are a few screenshots of what this plugin could look like on your site for 
 ### Known Issues
 
 When using the plugin in combination with BuddyPress Media, a conflict can arise due to the activity stream upload, since both the plugins are trying to upload media through the activity stream. If you want to use the BuddyPress Activity Plus functionality, uncheck "Enable Activity Uploading" on the BuddyPress Media Settings Page.
+
+// Dropped
+bpfb_injection_additional_condition
