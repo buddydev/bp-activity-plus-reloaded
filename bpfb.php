@@ -25,51 +25,32 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define ('BPFB_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)));
-define ('BPFB_PROTOCOL', (is_ssl() ? 'https://' : 'http://'));
+define( 'BPFB_PLUGIN_SELF_DIRNAME', basename( dirname( __FILE__ ) ) );
+define( 'BPFB_PROTOCOL', ( is_ssl() ? 'https://' : 'http://' ) );
 
-//Setup proper paths/URLs and load text domains
-if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') && file_exists(WPMU_PLUGIN_DIR . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'mu-plugins');
-	define ('BPFB_PLUGIN_BASE_DIR', WPMU_PLUGIN_DIR);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WPMU_PLUGIN_URL));
-	$textdomain_handler = 'load_muplugin_textdomain';
-} else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . BPFB_PLUGIN_SELF_DIRNAME . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'subfolder-plugins');
-	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR . '/' . BPFB_PLUGIN_SELF_DIRNAME);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL) . '/' . BPFB_PLUGIN_SELF_DIRNAME);
-	$textdomain_handler = 'load_plugin_textdomain';
-} else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . basename(__FILE__))) {
-	define ('BPFB_PLUGIN_LOCATION', 'plugins');
-	define ('BPFB_PLUGIN_BASE_DIR', WP_PLUGIN_DIR);
-	define ('BPFB_PLUGIN_URL', str_replace('http://', BPFB_PROTOCOL, WP_PLUGIN_URL));
-	$textdomain_handler = 'load_plugin_textdomain';
-} else {
-	// No textdomain is loaded because we can't determine the plugin location.
-	// No point in trying to add textdomain to string and/or localizing it.
-	wp_die(__('There was an issue determining where BuddyPress Activity Plus plugin is installed. Please reinstall.'));
+define( 'BPFB_PLUGIN_BASE_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+define( 'BPFB_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+
+load_plugin_textdomain( 'bpfb', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
+
+// Override image limit in wp-config.php.
+if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
+	define( 'BPFB_IMAGE_LIMIT', 5 );
 }
-$textdomain_handler('bpfb', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/');
 
-// Override oEmbed width in wp-config.php
-//if (!defined('BPFB_OEMBED_WIDTH')) define('BPFB_OEMBED_WIDTH', 450, true); // Don't define by default
-// Override image limit in wp-config.php
-if (!defined('BPFB_IMAGE_LIMIT')) define('BPFB_IMAGE_LIMIT', 5);
-// Override link target preference in wp-config.php
-if (!defined('BPFB_LINKS_TARGET')) define('BPFB_LINKS_TARGET', false);
-
-
+// Override link target preference in wp-config.php.
+if ( ! defined( 'BPFB_LINKS_TARGET' ) ) {
+	define( 'BPFB_LINKS_TARGET', false );
+}
 $wp_upload_dir = wp_upload_dir();
-define('BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/');
-define('BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/');
-define('BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/');
-define('BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/');
+define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
+define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
+define( 'BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/' );
+define( 'BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/' );
 
-
-
-// Hook up the installation routine and check if we're really, really set to go
+// Hook up the installation routine and check if we're really, really set to go.
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_installer.php';
-register_activation_hook(__FILE__, array('BpfbInstaller', 'install'));
+register_activation_hook( __FILE__, array( 'BpfbInstaller', 'install' ) );
 BpfbInstaller::check();
 
 // Require the data wrapper
@@ -77,24 +58,25 @@ require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
 require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
 
 
-
 /**
  * Includes the core requirements and serves the improved activity box.
  */
-function bpfb_plugin_init () {
-	require_once(BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_binder.php');
-	require_once(BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_codec.php');
+function bpfb_plugin_init() {
+	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_binder.php' );
+	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_codec.php' );
 	// Group Documents integration
-	if (defined('BP_GROUP_DOCUMENTS_IS_INSTALLED') && BP_GROUP_DOCUMENTS_IS_INSTALLED) {
-		require_once(BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php');
+	if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
+		require_once( BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php' );
 	}
-	if (is_admin()) {
-		if (file_exists(BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php')) {
+	if ( is_admin() ) {
+		if ( file_exists( BPFB_PLUGIN_BASE_DIR . '/lib/external/dash/wpmudev-dash-notification.php' ) ) {
 			global $wpmudev_notices;
-			if (!is_array($wpmudev_notices)) $wpmudev_notices = array();
+			if ( ! is_array( $wpmudev_notices ) ) {
+				$wpmudev_notices = array();
+			}
 			$wpmudev_notices[] = array(
-				'id' => 232,
-				'name' => 'BuddyPress Activity Plus',
+				'id'      => 232,
+				'name'    => 'BuddyPress Activity Plus',
 				'screens' => array(
 					'settings_page_bpfb-settings',
 				),
@@ -105,8 +87,9 @@ function bpfb_plugin_init () {
 		Bpfb_Admin::serve();
 	}
 
-	do_action('bpfb_init');
+	do_action( 'bpfb_init' );
 	BpfbBinder::serve();
 }
+
 // Only fire off if BP is actually loaded.
-add_action('bp_loaded', 'bpfb_plugin_init');
+add_action( 'bp_loaded', 'bpfb_plugin_init' );
