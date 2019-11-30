@@ -5,7 +5,6 @@
  * @package    BuddyPress Activity Plus Reloaded
  * @subpackage Core
  * @license    https://www.gnu.org/licenses/gpl.html GNU Public License
- * @author     Brajesh Singh
  * @since      1.0.0
  */
 
@@ -15,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Data container class.
  */
-class Bpfb_Data_Container {
+class BPFB_Data_Container {
 
 	/**
 	 * Settings.
@@ -24,16 +23,30 @@ class Bpfb_Data_Container {
 	 */
 	private $_data;
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		$data        = get_option( 'bpfb', array() );
-		$this->_data = wp_parse_args( $data, array(
-			'oembed_width'   => 450,
-			'image_limit'    => 5,
-			'links_target'   => false,
-			'cleanup_images' => false,
-		) );
+		$this->_data = wp_parse_args(
+			$data,
+			array(
+				'oembed_width'   => 450,
+				'image_limit'    => 5,
+				'links_target'   => false,
+				'cleanup_images' => false,
+			)
+		);
 	}
 
+	/**
+	 * Get option.
+	 *
+	 * @param string $option option name.
+	 * @param bool   $fallback fallback value.
+	 *
+	 * @return bool|mixed
+	 */
 	public function get( $option, $fallback = false ) {
 		$define = 'BPFB_' . strtoupper( $option );
 		if ( defined( $define ) ) {
@@ -43,10 +56,13 @@ class Bpfb_Data_Container {
 		return $this->_get( $option, $fallback );
 	}
 
-	public function get_strict( $option, $fallback = false ) {
-		return $this->_get( $option, $fallback );
-	}
-
+	/**
+	 * Get thumbnail size.
+	 *
+	 * @param bool $strict disable override by constants.
+	 *
+	 * @return array
+	 */
 	public function get_thumbnail_size( $strict = false ) {
 		$thumb_w = empty( $this->_data['thumbnail_size_width'] ) || ! (int) $this->_data['thumbnail_size_width']
 			? get_option( 'thumbnail_size_w', 100 )
@@ -57,9 +73,10 @@ class Bpfb_Data_Container {
 			: (int) $this->_data['thumbnail_size_height'];
 		$thumb_h = $thumb_h ? $thumb_h : 100;
 
-		// Override thumbnail image size in wp-config.php
+		// Override thumbnail image size in wp-config.php.
 		if ( ! $strict && defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) {
 			list( $tw, $th ) = explode( 'x', BPFB_THUMBNAIL_IMAGE_SIZE );
+
 			$thumb_w = (int) $tw ? (int) $tw : $thumb_w;
 			$thumb_h = (int) $th ? (int) $th : $thumb_h;
 		}
@@ -67,6 +84,9 @@ class Bpfb_Data_Container {
 		return array( $thumb_w, $thumb_h );
 	}
 
+	/*
+	 * Get option.
+	 */
 	private function _get( $option, $fallback = false ) {
 		if ( isset( $this->_data[ $option ] ) ) {
 			return $this->_data[ $option ];

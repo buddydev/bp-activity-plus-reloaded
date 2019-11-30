@@ -20,7 +20,7 @@ class BPFB_Data {
 	/**
 	 * Singleton instance.
 	 *
-	 * @var Bpfb_Data_Container
+	 * @var BPFB_Data_Container
 	 */
 	private static $_instance = null;
 
@@ -42,7 +42,7 @@ class BPFB_Data {
 	 * @param array $option options.
 	 * @param bool  $fallback should use fallback.
 	 *
-	 * @return Bpfb_Data_Container
+	 * @return BPFB_Data_Container
 	 */
 	public static function get( $option, $fallback = false ) {
 		if ( ! self::$_instance ) {
@@ -76,6 +76,6 @@ class BPFB_Data {
 			return;
 		}
 
-		self::$_instance = new Bpfb_Data_Container();
+		self::$_instance = new BPFB_Data_Container();
 	}
 }
