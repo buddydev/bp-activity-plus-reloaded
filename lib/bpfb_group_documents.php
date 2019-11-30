@@ -43,7 +43,7 @@ class Bpfb_Documents {
 		if (!defined('BP_GROUP_DOCUMENTS_IS_INSTALLED') || !BP_GROUP_DOCUMENTS_IS_INSTALLED) return false;
 
 		add_action('wp_print_scripts', array($this, 'add_js_globals'));
-		wp_enqueue_script('bpfb_group_documents', BPFB_PLUGIN_URL . '/js/bpfb_group_documents.js', array('bpfb_interface_script'));
+		wp_enqueue_script('bpfb_group_documents', BPFB_PLUGIN_URL . '/assets/js/bpfb_group_documents.js', array('bpfb_interface_script'));
 		wp_localize_script('bpfb_group_documents', 'l10nBpfbDocs', array(
 			'add_documents' => __('Add documents', 'bpfb'),
 			'no_group_selected' => __('Please select a group to upload to', 'bpfb'),

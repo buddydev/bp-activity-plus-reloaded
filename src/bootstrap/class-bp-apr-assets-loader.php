@@ -78,7 +78,7 @@ class BPAPR_Assets_Loader {
 
 		$version = '1.0.0';
 
-		wp_register_script( 'file_uploader', BPFB_PLUGIN_URL . '/js/external/fileuploader.js', array( 'jquery' ), $version );
+		wp_register_script( 'file_uploader', BPFB_PLUGIN_URL . '/assets/js/external/fileuploader.js', array( 'jquery' ), $version );
 
 	}
 
@@ -89,7 +89,7 @@ class BPAPR_Assets_Loader {
 		// @todo change later.
 		$version = '1.0.0';
 
-		wp_register_script( 'bpfb_interface_script', BPFB_PLUGIN_URL . '/js/bpfb_interface.js', array( 'file_uploader' ), $version );
+		wp_register_script( 'bpfb_interface_script', BPFB_PLUGIN_URL . '/assets/js/bpfb_interface.js', array( 'file_uploader' ), $version );
 
 		wp_register_style( 'file_uploader_style', BPFB_PLUGIN_URL . '/assets/css/external/fileuploader.css', false, $version );
 		wp_register_style( 'bpfb_interface_style', BPFB_PLUGIN_URL . '/assets/css/bpfb_interface.css', false, $version );
