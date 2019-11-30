@@ -63,7 +63,7 @@ require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
  */
 function bpfb_plugin_init() {
 	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_binder.php' );
-	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_codec.php' );
+	require_once( BPFB_PLUGIN_BASE_DIR . '/src/shortcodes/class-bpfb-shortcodes.php' );
 	// Group Documents integration.
 	if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
 		require_once( BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php' );
