@@ -84,7 +84,6 @@ class Bpfb_Admin {
 		$cleanup_images = Bpfb_Data::get('cleanup_images', false);
 		?>
 <div class="wrap bpfb">
-	<?php screen_icon('buddypress'); ?>
 	<h2><?php echo get_admin_page_title(); ?></h2>
 	<form action="" method="POST">
 		
