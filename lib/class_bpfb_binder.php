@@ -53,12 +53,18 @@ class BpfbBinder {
 						$thumb_filename  = $image->generate_filename('bpfbt');
 						$image->resize($thumb_w, $thumb_h, false);
 
-						// Alright, now let's rotate if we can
-						if (function_exists('exif_read_data')) {
-							$exif = exif_read_data($new_img); // Okay, we now have the data
-							if (!empty($exif['Orientation']) && 3 === (int)$exif['Orientation']) $image->rotate(180);
-							else if (!empty($exif['Orientation']) && 6 === (int)$exif['Orientation']) $image->rotate(-90);
-							else if (!empty($exif['Orientation']) && 8 === (int)$exif['Orientation']) $image->rotate(90);
+						$type = function_exists( 'exif_imagetype' ) ? exif_imagetype( $new_img ) : '';
+
+						// Alright, now let's rotate if we can.
+						$exif = ( $type && IMAGETYPE_JPEG === $type ) && function_exists( 'exif_read_data' ) ? exif_read_data( $new_img ) : false;
+						if ( $exif ) {
+							if ( ! empty( $exif['Orientation'] ) && 3 === (int) $exif['Orientation'] ) {
+								$image->rotate( 180 );
+							} elseif ( ! empty( $exif['Orientation'] ) && 6 === (int) $exif['Orientation'] ) {
+								$image->rotate( - 90 );
+							} elseif ( ! empty( $exif['Orientation'] ) && 8 === (int) $exif['Orientation'] ) {
+								$image->rotate( 90 );
+							}
 						}
 
 						$image->save($thumb_filename);
