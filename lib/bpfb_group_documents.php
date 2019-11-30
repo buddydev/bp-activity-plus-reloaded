@@ -54,7 +54,7 @@ class Bpfb_Documents {
 	 * Handles document upload preview
 	 */
 	public function ajax_preview_document () {
-		$dir = BPFB_PLUGIN_BASE_DIR . '/img/';
+		$dir = BPFB_PLUGIN_BASE_DIR . '/assets/img/';
 		if (!class_exists('qqFileUploader')) require_once(BPFB_PLUGIN_BASE_DIR . '/lib/external/file_uploader.php');
 		$uploader = new qqFileUploader(array_map('trim', explode(',', BPFB_DOCUMENTS_ALLOWED_EXTENSIONS)));
 		$result = $uploader->handleUpload(BPFB_TEMP_IMAGE_DIR);

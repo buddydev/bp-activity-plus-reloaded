@@ -140,9 +140,9 @@ var BpfbLinkHandler = function () {
 					'<div class="bpfb_link_preview_body">' + data.text + '</div>' +
 					'<input type="hidden" name="bpfb_link_body" value="' + data.text + '" />' +
 					'<div class="bpfb_thumbnail_chooser">' +
-						'<span class="bpfb_left"><img class="bpfb_thumbnail_chooser_left" src="' + _bpfb_data.root_url + '/img/system/left.gif" />&nbsp;</span>' +
+						'<span class="bpfb_left"><img class="bpfb_thumbnail_chooser_left" src="' + _bpfb_data.root_url + '/assets/img/system/left.gif" />&nbsp;</span>' +
 						'<span class="bpfb_thumbnail_chooser_label">' + l10nBpfb.choose_thumbnail + '</span>' +
-						'<span class="bpfb_right">&nbsp;<img class="bpfb_thumbnail_chooser_right" src="' + _bpfb_data.root_url + '/img/system/right.gif" /></span>' +
+						'<span class="bpfb_right">&nbsp;<img class="bpfb_thumbnail_chooser_right" src="' + _bpfb_data.root_url + '/assets/img/system/right.gif" /></span>' +
 						'<br /><input type="checkbox" id="bpfb_link_no_thumbnail" /> <label for="bpfb_link_no_thumbnail">' + l10nBpfb.no_thumbnail + '</label>' +
 					'</div>' +
 				'</td>' +

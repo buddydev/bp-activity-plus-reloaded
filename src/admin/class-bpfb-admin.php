@@ -155,17 +155,17 @@ class BPFB_Admin {
                     <fieldset class="theme option">
                         <legend><?php _e( 'Theme', 'bpfb' ); ?></legend>
                         <label for="bpfb-theme-default">
-                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/img/system/theme-legacy.png"/>
+                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-legacy.png"/>
                             <input type="radio" id="bpfb-theme-default" name="bpfb[theme]" value="" <?php checked( $theme, '' ); ?> />
 							<?php _e( 'Default (legacy)', 'bpfb' ); ?>
                         </label>
                         <label for="bpfb-theme-new">
-                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/img/system/theme-new.png"/>
+                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-new.png"/>
                             <input type="radio" id="bpfb-theme-new" name="bpfb[theme]" value="new" <?php checked( $theme, 'new' ); ?> />
 							<?php _e( 'New', 'bpfb' ); ?>
                         </label>
                         <label for="bpfb-theme-round">
-                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/img/system/theme-round.png"/>
+                            <img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-round.png"/>
                             <input type="radio" id="bpfb-theme-round" name="bpfb[theme]" value="round" <?php checked( $theme, 'round' ); ?> />
 							<?php _e( 'Round', 'bpfb' ); ?>
                         </label>
