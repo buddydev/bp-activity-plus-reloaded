@@ -74,27 +74,8 @@ BpfbInstaller::check();
 
 // Require the data wrapper
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
+require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
 
-/**
- * Helper functions for going around the fact that
- * BuddyPress is NOT multisite compatible.
- */
-function bpfb_get_image_url ($blog_id) {
-	if (!defined('BP_ENABLE_MULTIBLOG') || !BP_ENABLE_MULTIBLOG) return str_replace('http://', BPFB_PROTOCOL, BPFB_BASE_IMAGE_URL);
-	if (!$blog_id) return str_replace('http://', BPFB_PROTOCOL, BPFB_BASE_IMAGE_URL);
-	switch_to_blog($blog_id);
-	$wp_upload_dir = wp_upload_dir();
-	restore_current_blog();
-	return str_replace('http://', BPFB_PROTOCOL, $wp_upload_dir['baseurl']) . '/bpfb/';
-}
-function bpfb_get_image_dir ($blog_id) {
-	if (!defined('BP_ENABLE_MULTIBLOG') || !BP_ENABLE_MULTIBLOG) return BPFB_BASE_IMAGE_DIR;
-	if (!$blog_id) return BPFB_BASE_IMAGE_DIR;
-	switch_to_blog($blog_id);
-	$wp_upload_dir = wp_upload_dir();
-	restore_current_blog();
-	return $wp_upload_dir['basedir'] . '/bpfb/';
-}
 
 
 /**
