@@ -53,7 +53,7 @@ require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_installer.php';
 register_activation_hook( __FILE__, array( 'BpfbInstaller', 'install' ) );
 BpfbInstaller::check();
 
-// Require the data wrapper
+// Require the data wrapper.
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
 require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
 
