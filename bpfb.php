@@ -50,8 +50,7 @@ define( 'BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/' );
 
 // Hook up the installation routine and check if we're really, really set to go.
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_installer.php';
-register_activation_hook( __FILE__, array( 'BpfbInstaller', 'install' ) );
-BpfbInstaller::check();
+register_activation_hook( __FILE__, array( 'BPFBInstaller', 'install' ) );
 
 // Require the data wrapper.
 require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_data.php';
