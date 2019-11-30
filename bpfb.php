@@ -76,8 +76,8 @@ function bpfb_plugin_init() {
 	}
 
 	if ( is_admin() ) {
-		require_once BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_admin_pages.php';
-		Bpfb_Admin::serve();
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/admin/class-bpfb-admin.php';
+		BPFB_Admin::boot();
 	}
 
 	do_action( 'bpfb_init' );
