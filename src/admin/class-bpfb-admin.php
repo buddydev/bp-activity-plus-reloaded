@@ -85,7 +85,7 @@ class BPFB_Admin {
 		if ( $hook !== $this->_page_hook ) {
 			return;
 		}
-		wp_enqueue_style( 'bpfb-admin', BPFB_PLUGIN_URL . '/css/admin.css' );
+		wp_enqueue_style( 'bpfb-admin', BPFB_PLUGIN_URL . '/assets/css/admin.css' );
 	}
 
 	/**

@@ -91,9 +91,9 @@ class BPAPR_Assets_Loader {
 
 		wp_register_script( 'bpfb_interface_script', BPFB_PLUGIN_URL . '/js/bpfb_interface.js', array( 'file_uploader' ), $version );
 
-		wp_register_style( 'file_uploader_style', BPFB_PLUGIN_URL . '/css/external/fileuploader.css', false, $version );
-		wp_register_style( 'bpfb_interface_style', BPFB_PLUGIN_URL . '/css/bpfb_interface.css', false, $version );
-		wp_register_style( 'bpfb_toolbar_icons', BPFB_PLUGIN_URL . '/css/bpfb_toolbar.css', false, $version );
+		wp_register_style( 'file_uploader_style', BPFB_PLUGIN_URL . '/assets/css/external/fileuploader.css', false, $version );
+		wp_register_style( 'bpfb_interface_style', BPFB_PLUGIN_URL . '/assets/css/bpfb_interface.css', false, $version );
+		wp_register_style( 'bpfb_toolbar_icons', BPFB_PLUGIN_URL . '/assets/css/bpfb_toolbar.css', false, $version );
 
 
 		$this->data = array(
@@ -152,11 +152,11 @@ class BPAPR_Assets_Loader {
 		<style type="text/css">
 			@font-face {
 				font-family: 'bpfb';
-				src: url('<?php echo $url;?>/css/external/font/bpfb.eot');
-				src: url('<?php echo $url;?>/css/external/font/bpfb.eot?#iefix') format('embedded-opentype'),
-				url('<?php echo $url;?>/css/external/font/bpfb.woff') format('woff'),
-				url('<?php echo $url;?>/css/external/font/bpfb.ttf') format('truetype'),
-				url('<?php echo $url;?>/css/external/font/bpfb.svg#icomoon') format('svg');
+				src: url('<?php echo $url;?>/assets/css/external/font/bpfb.eot');
+				src: url('<?php echo $url;?>/assets/css/external/font/bpfb.eot?#iefix') format('embedded-opentype'),
+				url('<?php echo $url;?>/assets/css/external/font/bpfb.woff') format('woff'),
+				url('<?php echo $url;?>/assets/css/external/font/bpfb.ttf') format('truetype'),
+				url('<?php echo $url;?>/assets/css/external/font/bpfb.svg#icomoon') format('svg');
 				font-weight: normal;
 				font-style: normal;
 			}
