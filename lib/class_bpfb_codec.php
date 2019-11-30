@@ -7,7 +7,7 @@
  * 2) Decodes shortcodes and creates proper markup on post render
  * 3) Encodes requests into shortcodes on post save
  */
-class BpfbCodec {
+class BPFB_Shortcodes {
 
 	/**
 	 * Processes link-type shortcode and create proper markup.
@@ -130,7 +130,7 @@ class BpfbCodec {
 	 * Registers shotcode processing procedures.
 	 */
 	public static function register () {
-		$me = new BpfbCodec;
+		$me = new BPFB_Shortcodes;
 		add_shortcode('bpfb_link', array($me, 'process_link_tag'));
 		add_shortcode('bpfb_video', array($me, 'process_video_tag'));
 		add_shortcode('bpfb_images', array($me, 'process_images_tag'));

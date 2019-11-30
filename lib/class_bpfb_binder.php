@@ -332,7 +332,7 @@ EOFontIconCSS;
 	function ajax_update_activity_contents () {
 		$bpfb_code = $activity = '';
 		$aid = 0;
-		$codec = new BpfbCodec;
+		$codec = new BPFB_Shortcodes;
 
 		if (!empty($_POST['data'])) {
 			if (!empty($_POST['data']['bpfb_video_url'])) {
@@ -436,7 +436,7 @@ EOFontIconCSS;
 		if (!is_object($activity) || empty($activity->content)) return false;
 
 		if (!bp_activity_user_can_delete($activity)) return false;
-		if (!BpfbCodec::has_images($activity->content)) return false;
+		if (!BPFB_Shortcodes::has_images($activity->content)) return false;
 
 		$matches = array();
 		preg_match('/\[bpfb_images\](.*?)\[\/bpfb_images\]/s', $activity->content, $matches);
@@ -457,7 +457,7 @@ EOFontIconCSS;
 		if (!BPFB_Data::get('cleanup_images')) return false;
 		if (!bp_activity_user_can_delete($activity)) return false;
 
-		$images = BpfbCodec::extract_images($content);
+		$images = BPFB_Shortcodes::extract_images($content);
 		if (empty($images)) return false;
 
 		foreach ($images as $image) {
@@ -507,7 +507,7 @@ EOFontIconCSS;
 		do_action('bpfb_add_ajax_hooks');
 
 		// Step 3: Register and process shortcodes
-		BpfbCodec::register();
+		BPFB_Shortcodes::register();
 
 		if (BPFB_Data::get('cleanup_images')) {
 			add_action('bp_before_activity_delete', array($this, 'remove_activity_images'));
