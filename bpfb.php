@@ -42,6 +42,7 @@ if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
 if ( ! defined( 'BPFB_LINKS_TARGET' ) ) {
 	define( 'BPFB_LINKS_TARGET', false );
 }
+
 $wp_upload_dir = wp_upload_dir();
 define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
 define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
@@ -52,21 +53,23 @@ define( 'BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/' );
 require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpfb-installer.php';
 register_activation_hook( __FILE__, array( 'BPFB_Installer', 'install' ) );
 
-// Require the data wrapper.
-require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data-container.php';
-require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data.php';
-require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
-
-require_once BPFB_PLUGIN_BASE_DIR . '/src/bootstrap/class-bp-apr-assets-loader.php';
-
-BPAPR_Assets_Loader::boot();
-
 /**
  * Includes the core requirements and serves the improved activity box.
  */
 function bpfb_plugin_init() {
-	require_once( BPFB_PLUGIN_BASE_DIR . '/lib/class_bpfb_binder.php' );
+
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data-container.php';
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data.php';
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
+
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/bootstrap/class-bp-apr-assets-loader.php';
+
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-activity-update-handler.php';
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-preview-handler.php';
+	require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-delete-handler.php';
+
 	require_once( BPFB_PLUGIN_BASE_DIR . '/src/shortcodes/class-bpfb-shortcodes.php' );
+
 	// Group Documents integration.
 	if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
 		require_once( BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php' );
@@ -78,8 +81,21 @@ function bpfb_plugin_init() {
 	}
 
 	do_action( 'bpfb_init' );
-	BpfbBinder::serve();
 }
 
 // Only fire off if BP is actually loaded.
 add_action( 'bp_loaded', 'bpfb_plugin_init' );
+
+/**
+ * Setup.
+ */
+function bpfb_plugin_setup() {
+	BPAPR_Preview_Handler::boot();
+	BPAPR_Activity_Update_Handler::boot();
+	BPAPR_Delete_Handler::boot();
+
+	BPAPR_Assets_Loader::boot();
+	BPFB_Shortcodes::register();
+}
+
+add_action( 'bp_loaded', 'bpfb_plugin_setup' );

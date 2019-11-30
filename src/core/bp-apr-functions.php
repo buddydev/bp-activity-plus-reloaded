@@ -47,3 +47,52 @@ function bpfb_get_image_dir( $blog_id ) {
 
 	return $wp_upload_dir['basedir'] . '/bpfb/';
 }
+
+/**
+ * Sanitizes the path and expands it into full form.
+ *
+ * @param string $file Relative file path.
+ *
+ * @return mixed Sanitized path, or (bool)false on failure
+ */
+function bpapr_get_resolved_temp_path( $file ) {
+	$file = ltrim( $file, '/' );
+
+	// No subdirs in path, so we can do this quick check too.
+	if ( basename( $file ) !== $file ) {
+		return false;
+	}
+
+	$tmp_path = trailingslashit( wp_normalize_path( realpath( BPFB_TEMP_IMAGE_DIR ) ) );
+	if ( empty( $tmp_path ) ) {
+		return false;
+	}
+
+	$full_path = wp_normalize_path( realpath( $tmp_path . $file ) );
+	if ( empty( $full_path ) ) {
+		return false;
+	}
+
+	// Are we still within our defined TMP dir?
+	$rx        = preg_quote( $tmp_path, '/' );
+	$full_path = preg_match( "/^{$rx}/", $full_path )
+		? $full_path
+		: false;
+	if ( empty( $full_path ) ) {
+		return false;
+	}
+
+	// Also, does this resolve to an actual file?
+	return file_exists( $full_path )
+		? $full_path
+		: false;
+}
+
+/**
+ * Get supported image extensions.
+ *
+ * @return array Supported image extensions
+ */
+function bpapr_get_supported_image_extensions() {
+	return array( 'jpg', 'jpeg', 'png', 'gif' );
+}
