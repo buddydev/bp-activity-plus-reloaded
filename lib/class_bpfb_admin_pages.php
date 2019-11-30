@@ -50,7 +50,7 @@ class Bpfb_Admin {
 		if (!check_ajax_referer($this->_page_hook)) return false;
 
 		$raw = stripslashes_deep($_POST['bpfb']);
-		list($thumb_w,$thumb_h) = Bpfb_Data::get_thumbnail_size(true);
+		list($thumb_w,$thumb_h) = BPFB_Data::get_thumbnail_size(true);
 		$raw['thumbnail_size_height'] = !empty($raw['thumbnail_size_height']) && (int)$raw['thumbnail_size_height']
 			? (int)$raw['thumbnail_size_height']
 			: $thumb_h
@@ -61,7 +61,7 @@ class Bpfb_Admin {
 		;
 		$raw['oembed_width'] = !empty($raw['oembed_width']) && (int)$raw['oembed_width']
 			? (int)$raw['oembed_width']
-			: Bpfb_Data::get('oembed_width')
+			: BPFB_Data::get('oembed_width')
 		;
 		$raw['theme'] = !empty($raw['theme'])
 			? sanitize_html_class($raw['theme'])
@@ -77,11 +77,11 @@ class Bpfb_Admin {
 	}
 
 	public function settings_page () {
-		$theme = Bpfb_Data::get('theme');
-		list($thumb_w,$thumb_h) = Bpfb_Data::get_thumbnail_size();
-		$oembed_width = Bpfb_Data::get('oembed_width', 450);
-		$alignment = Bpfb_Data::get('alignment', 'left');
-		$cleanup_images = Bpfb_Data::get('cleanup_images', false);
+		$theme = BPFB_Data::get('theme');
+		list($thumb_w,$thumb_h) = BPFB_Data::get_thumbnail_size();
+		$oembed_width = BPFB_Data::get('oembed_width', 450);
+		$alignment = BPFB_Data::get('alignment', 'left');
+		$cleanup_images = BPFB_Data::get('cleanup_images', false);
 		?>
 <div class="wrap bpfb">
 	<h2><?php echo get_admin_page_title(); ?></h2>

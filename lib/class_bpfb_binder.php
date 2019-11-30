@@ -32,7 +32,7 @@ class BpfbBinder {
 		global $bp;
 		$ret = array();
 
-		list($thumb_w,$thumb_h) = Bpfb_Data::get_thumbnail_size();
+		list($thumb_w,$thumb_h) = BPFB_Data::get_thumbnail_size();
 
 		$processed = 0;
 		foreach ($imgs as $img) {
@@ -142,8 +142,8 @@ class BpfbBinder {
 				'root_url' => BPFB_PLUGIN_URL,
 				'temp_img_url' => BPFB_TEMP_IMAGE_URL,
 				'base_img_url' => BPFB_BASE_IMAGE_URL,
-				'theme' => Bpfb_Data::get('theme', 'default'),
-				'alignment' => Bpfb_Data::get('alignment', 'left'),
+				'theme' => BPFB_Data::get('theme', 'default'),
+				'alignment' => BPFB_Data::get('alignment', 'left'),
 			)
 		);
 		printf('<script type="text/javascript">var _bpfb_data=%s;</script>', json_encode($data));
@@ -454,7 +454,7 @@ EOFontIconCSS;
 	 * @return bool
 	 */
 	private function _clean_up_content_images ($content, $activity) {
-		if (!Bpfb_Data::get('cleanup_images')) return false;
+		if (!BPFB_Data::get('cleanup_images')) return false;
 		if (!bp_activity_user_can_delete($activity)) return false;
 
 		$images = BpfbCodec::extract_images($content);
@@ -509,7 +509,7 @@ EOFontIconCSS;
 		// Step 3: Register and process shortcodes
 		BpfbCodec::register();
 
-		if (Bpfb_Data::get('cleanup_images')) {
+		if (BPFB_Data::get('cleanup_images')) {
 			add_action('bp_before_activity_delete', array($this, 'remove_activity_images'));
 		}
 	}

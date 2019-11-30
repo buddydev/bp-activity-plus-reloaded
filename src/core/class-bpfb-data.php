@@ -15,48 +15,67 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Data.
  */
-class Bpfb_Data {
+class BPFB_Data {
+
 	/**
 	 * Singleton instance.
 	 *
-	 * @var Bpfb_Data
+	 * @var Bpfb_Data_Container
 	 */
-	private static $_instance;
+	private static $_instance = null;
 
+	/**
+	 * Prevent instantiation.
+	 */
 	private function __construct() {
 	}
 
+	/**
+	 * Prevent cloning.
+	 */
 	private function __clone() {
 	}
 
+	/**
+	 * Get the container object.
+	 *
+	 * @param array $option options.
+	 * @param bool  $fallback should use fallback.
+	 *
+	 * @return Bpfb_Data_Container
+	 */
 	public static function get( $option, $fallback = false ) {
 		if ( ! self::$_instance ) {
-			self::_spawn_instance();
+			self::create_container();
 		}
 
 		return self::$_instance->get( $option, $fallback );
 	}
 
-	public static function get_strict( $option, $fallback = false ) {
-		if ( ! self::$_instance ) {
-			self::_spawn_instance();
-		}
-
-		return self::$_instance->get_strict( $option, $fallback );
-	}
-
+	/**
+	 * Get thumbnail dimension.
+	 *
+	 * @param bool $strict should disable value overrides.
+	 *
+	 * @return array
+	 */
 	public static function get_thumbnail_size( $strict = false ) {
 		if ( ! self::$_instance ) {
-			self::_spawn_instance();
+			self::create_container();
 		}
 
 		return self::$_instance->get_thumbnail_size( $strict );
 	}
 
-	private static function _spawn_instance() {
-		if ( self::$_instance ) {
-			return false;
+	/**
+	 * Create singleton container instance.
+	 */
+	private static function create_container() {
+
+		if ( ! is_null( self::$_instance ) ) {
+			return;
 		}
-		self::$_instance = new Bpfb_Data_Container;
+
+		self::$_instance = new Bpfb_Data_Container();
 	}
 }
