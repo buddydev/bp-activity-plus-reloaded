@@ -1,19 +1,22 @@
 <?php
-/*
-Plugin Name: BuddyPress Activity Plus
-Plugin URI: http://premium.wpmudev.org/project/media-embeds-for-buddypress-activity
-Description: A Facebook-style media sharing improvement for the activity box.
-Version: 1.6.6-BETA-1
-Author: WPMU DEV
-Author URI: http://premium.wpmudev.org
-WDP ID: 232
+/**
+ * Plugin Name: BuddyPress Activity Plus Reloaded
+ * Plugin URI: http://premium.wpmudev.org/project/media-embeds-for-buddypress-activity
+ * Description: A Facebook-style media sharing improvement for the activity box.
+ * Version: 1.0.0
+ * Author: BuddyDev
+ * Author URI: https://buddydev.com
+*/
 
-Copyright 2009-2011 Incsub (http://incsub.com)
-Author - Ve Bailovity (Incsub)
-Designed by Brett Sirianni (The Edge)
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
-the Free Software Foundation.
+/*
+ * Credit:
+ * This plugin is a fork of BuddyPress Activity Plus plugin by WPMUDEV(https://premium.wpmudev.org/).
+ * Copyright 2009-2011 Incsub (http://incsub.com)
+ * Author - Ve Bailovity (Incsub)
+ * Designed by Brett Sirianni (The Edge)
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
+ * the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of

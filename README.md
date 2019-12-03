@@ -1,13 +1,8 @@
-# BuddyPress Activity+
+# BuddyPress Activity Plus Reloaded
 
-**INACTIVE NOTICE: This plugin is unsupported by WPMUDEV, we've published it here for those technical types who might want to fork and maintain it for their needs.**
-
-## Translations
-
-Translation files can be found at https://github.com/wpmudev/translations
+This plugin is a fork of BuddyPress Activity Plus by WPMUDEV.
 
 ## Fast powerful image, video and link sharing for BuddyPress.
-
  
 
 ![share-video-735x470](https://premium.wpmudev.org/wp-content/uploads/2011/05/share-video-735x470.jpg)
