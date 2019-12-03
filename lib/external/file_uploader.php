@@ -1,5 +1,8 @@
 <?php
 
+// Do not allow direct access over web.
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Handle file uploads via XMLHttpRequest
  */

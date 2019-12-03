@@ -53,22 +53,22 @@ class BPAPR_Assets_Loader {
 		}
 
 		wp_enqueue_script( 'thickbox' );
-		wp_enqueue_script( 'bpfb_interface_script' );
+		wp_enqueue_script( 'bp-activity-plus-reloaded' );
 
-		wp_localize_script( 'bpfb_interface_script', 'l10nBpfb', $this->data );
+		wp_localize_script( 'bp-activity-plus-reloaded', 'BPAPRJSData', $this->data );
 
 		wp_enqueue_style( 'thickbox' );
-		wp_enqueue_style( 'file_uploader_style' );
+		wp_enqueue_style( 'bp-activity-plus-reloaded-uploader' );
 		if ( ! current_theme_supports( 'bpfb_interface_style' ) ) {
-			wp_enqueue_style( 'bpfb_interface_style' );
+			wp_enqueue_style( 'bp-activity-plus-reloaded' ); // backward compatibility.
 		}
 
-		if ( ! current_theme_supports( 'bpfb_toolbar_icons' ) ) {
-			wp_enqueue_style( 'bpfb_toolbar_icons' );
+		if ( ! current_theme_supports( 'bpfb_toolbar_icons' ) ) { // back compat.
+			wp_enqueue_style( 'bp-activity-plus-reloaded-toolbar' );
 		}
 
 		// back compat.
-		do_action('bpfb_add_cssjs_hooks');
+		do_action( 'bpfb_add_cssjs_hooks' );
 	}
 
 	/**
@@ -78,7 +78,7 @@ class BPAPR_Assets_Loader {
 
 		$version = '1.0.0';
 
-		wp_register_script( 'file_uploader', BPFB_PLUGIN_URL . '/assets/js/external/fileuploader.js', array( 'jquery' ), $version );
+		wp_register_script( 'qq-file-uploader', BPFB_PLUGIN_URL . '/assets/js/external/fileuploader.js', array( 'jquery' ), $version );
 
 	}
 
@@ -89,11 +89,11 @@ class BPAPR_Assets_Loader {
 		// @todo change later.
 		$version = '1.0.0';
 
-		wp_register_script( 'bpfb_interface_script', BPFB_PLUGIN_URL . '/assets/js/bpfb_interface.js', array( 'file_uploader' ), $version );
+		wp_register_script( 'bp-activity-plus-reloaded', BPFB_PLUGIN_URL . '/assets/js/bp-activity-plus-reloaded.js', array( 'qq-file-uploader' ), $version );
 
-		wp_register_style( 'file_uploader_style', BPFB_PLUGIN_URL . '/assets/css/external/fileuploader.css', false, $version );
-		wp_register_style( 'bpfb_interface_style', BPFB_PLUGIN_URL . '/assets/css/bpfb_interface.css', false, $version );
-		wp_register_style( 'bpfb_toolbar_icons', BPFB_PLUGIN_URL . '/assets/css/bpfb_toolbar.css', false, $version );
+		wp_register_style( 'bp-activity-plus-reloaded-uploader', BPFB_PLUGIN_URL . '/assets/css/external/fileuploader.css', false, $version );
+		wp_register_style( 'bp-activity-plus-reloaded', BPFB_PLUGIN_URL . '/assets/css/bp-activity-plus-reloaded.css', false, $version );
+		wp_register_style( 'bp-activity-plus-reloaded-toolbar', BPFB_PLUGIN_URL . '/assets/css/bp-activity-plus-reloaded-toolbar.css', false, $version );
 
 
 		$this->data = array(
@@ -140,7 +140,7 @@ class BPAPR_Assets_Loader {
 				'alignment'    => BPFB_Data::get( 'alignment', 'left' ),
 			)
 		);
-		printf( '<script type="text/javascript">var _bpfb_data=%s;</script>', json_encode( $data ) );
+		printf( '<script type="text/javascript">var BPAPRConfig=%s;</script>', json_encode( $data ) );
 
 		if ( 'default' === $data['theme'] || current_theme_supports( 'bpfb_toolbar_icons' ) ) {
 			return;

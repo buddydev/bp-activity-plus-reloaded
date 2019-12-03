@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Admin Settings Helper.
  *
