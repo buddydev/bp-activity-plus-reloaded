@@ -201,7 +201,7 @@ class BPAPR_Activity_Update_Handler {
 		}
 
 		$bpfb_code = '';
-		$codec     = new BPFB_Shortcodes();
+		$codec     = new BPAPR_Shortcodes();
 
 		if ( ! empty( $data['bpfb_video_url'] ) ) {
 			$bpfb_code = $codec->create_video_tag( $data['bpfb_video_url'] );
@@ -253,7 +253,7 @@ class BPAPR_Activity_Update_Handler {
 		global $bp;
 		$ret = array();
 
-		list( $thumb_w, $thumb_h ) = BPFB_Data::get_thumbnail_size();
+		list( $thumb_w, $thumb_h ) = BPAPR_Data::get_thumbnail_size();
 
 		$processed = 0;
 		foreach ( $images as $img ) {

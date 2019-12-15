@@ -108,7 +108,7 @@ class BPAPR_Admin {
 
 		$raw = wp_unslash( $_POST['bpfb'] );
 
-		list( $thumb_w, $thumb_h ) = BPFB_Data::get_thumbnail_size( true );
+		list( $thumb_w, $thumb_h ) = BPAPR_Data::get_thumbnail_size( true );
 		$raw['thumbnail_size_height'] = ! empty( $raw['thumbnail_size_height'] ) && (int) $raw['thumbnail_size_height']
 			? (int) $raw['thumbnail_size_height']
 			: $thumb_h;
@@ -117,7 +117,7 @@ class BPAPR_Admin {
 			: $thumb_w;
 		$raw['oembed_width']          = ! empty( $raw['oembed_width'] ) && (int) $raw['oembed_width']
 			? (int) $raw['oembed_width']
-			: BPFB_Data::get( 'oembed_width' );
+			: BPAPR_Data::get( 'oembed_width' );
 		$raw['theme']                 = ! empty( $raw['theme'] )
 			? sanitize_html_class( $raw['theme'] )
 			: '';
@@ -133,11 +133,11 @@ class BPAPR_Admin {
 	 * Settings page markup.
 	 */
 	public function settings_page() {
-		$theme = BPFB_Data::get( 'theme' );
-		list( $thumb_w, $thumb_h ) = BPFB_Data::get_thumbnail_size();
-		$oembed_width   = BPFB_Data::get( 'oembed_width', 450 );
-		$alignment      = BPFB_Data::get( 'alignment', 'left' );
-		$cleanup_images = BPFB_Data::get( 'cleanup_images', false );
+		$theme = BPAPR_Data::get( 'theme' );
+		list( $thumb_w, $thumb_h ) = BPAPR_Data::get_thumbnail_size();
+		$oembed_width   = BPAPR_Data::get( 'oembed_width', 450 );
+		$alignment      = BPAPR_Data::get( 'alignment', 'left' );
+		$cleanup_images = BPAPR_Data::get( 'cleanup_images', false );
 		?>
 		<div class="wrap bpfb">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>

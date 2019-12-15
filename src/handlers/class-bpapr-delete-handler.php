@@ -28,7 +28,7 @@ class BPAPR_Delete_Handler {
 	 */
 	public function setup() {
 
-		if ( BPFB_Data::get( 'cleanup_images' ) ) {
+		if ( BPAPR_Data::get( 'cleanup_images' ) ) {
 			add_action( 'bp_before_activity_delete', array( $this, 'remove_activity_images' ) );
 		}
 	}
@@ -61,7 +61,7 @@ class BPAPR_Delete_Handler {
 			return false;
 		}
 
-		if ( ! BPFB_Shortcodes::has_images( $activity->content ) ) {
+		if ( ! BPAPR_Shortcodes::has_images( $activity->content ) ) {
 			return false;
 		}
 
@@ -86,7 +86,7 @@ class BPAPR_Delete_Handler {
 	 */
 	private function _clean_up_content_images( $content, $activity ) {
 
-		if ( ! BPFB_Data::get( 'cleanup_images' ) ) {
+		if ( ! BPAPR_Data::get( 'cleanup_images' ) ) {
 			return false;
 		}
 
@@ -94,7 +94,7 @@ class BPAPR_Delete_Handler {
 			return false;
 		}
 
-		$images = BPFB_Shortcodes::extract_images( $content );
+		$images = BPAPR_Shortcodes::extract_images( $content );
 
 		if ( empty( $images ) ) {
 			return false;
@@ -118,8 +118,8 @@ class BPAPR_Delete_Handler {
 			}
 
 			// Construct the filenames.
-			$thumbnail = bpfb_get_image_dir( $activity_blog_id ) . $info['filename'] . '-bpfbt.' . $ext;
-			$full      = bpfb_get_image_dir( $activity_blog_id ) . trim( $image );
+			$thumbnail = bpapr_get_image_dir( $activity_blog_id ) . $info['filename'] . '-bpfbt.' . $ext;
+			$full      = bpapr_get_image_dir( $activity_blog_id ) . trim( $image );
 
 			// Actually remove the images.
 			if ( file_exists( $thumbnail ) && is_writable( $thumbnail ) ) {

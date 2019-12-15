@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Handles plugin installation.
  */
-class BPFB_Installer {
+class BPAPR_Installer {
 
 	/**
 	 * Entry method.

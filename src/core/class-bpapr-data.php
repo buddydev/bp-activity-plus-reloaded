@@ -15,12 +15,12 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Data.
  */
-class BPFB_Data {
+class BPAPR_Data {
 
 	/**
 	 * Singleton instance.
 	 *
-	 * @var BPFB_Data_Container
+	 * @var BPAPR_Data_Container
 	 */
 	private static $_instance = null;
 
@@ -42,7 +42,7 @@ class BPFB_Data {
 	 * @param array $option options.
 	 * @param bool  $fallback should use fallback.
 	 *
-	 * @return BPFB_Data_Container
+	 * @return BPAPR_Data_Container
 	 */
 	public static function get( $option, $fallback = false ) {
 		if ( ! self::$_instance ) {
@@ -76,6 +76,6 @@ class BPFB_Data {
 			return;
 		}
 
-		self::$_instance = new BPFB_Data_Container();
+		self::$_instance = new BPAPR_Data_Container();
 	}
 }

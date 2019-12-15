@@ -6,14 +6,14 @@
 		<img src="<?php echo esc_url($img); ?>" />
 	<?php } else { ?>
 		<?php $info = pathinfo(trim($img));?>
-		<?php $thumbnail = file_exists(bpfb_get_image_dir($activity_blog_id) . $info['filename'] . '-bpfbt.' . strtolower($info['extension'])) ?
-			bpfb_get_image_url($activity_blog_id) . $info['filename'] . '-bpfbt.' . strtolower($info['extension'])
+		<?php $thumbnail = file_exists( bpapr_get_image_dir($activity_blog_id) . $info['filename'] . '-bpfbt.' . strtolower($info['extension'])) ?
+			bpapr_get_image_url($activity_blog_id) . $info['filename'] . '-bpfbt.' . strtolower($info['extension'])
 			:
-			bpfb_get_image_url($activity_blog_id) . trim($img)
+			bpapr_get_image_url($activity_blog_id) . trim($img)
 		;
 		$target = 'all' == BPFB_LINKS_TARGET ? 'target="_blank"' : '';
 		?>
-		<a href="<?php echo esc_url(bpfb_get_image_url($activity_blog_id) . trim($img)); ?>" class="<?php echo $use_thickbox; ?>" rel="<?php echo $rel;?>" <?php echo $target; ?> >
+		<a href="<?php echo esc_url( bpapr_get_image_url($activity_blog_id) . trim($img)); ?>" class="<?php echo $use_thickbox; ?>" rel="<?php echo $rel;?>" <?php echo $target; ?> >
 			<img src="<?php echo esc_url($thumbnail);?>" />
 		</a>
 	<?php } ?>

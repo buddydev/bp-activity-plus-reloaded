@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Data container class.
  */
-class BPFB_Data_Container {
+class BPAPR_Data_Container {
 
 	/**
 	 * Settings.

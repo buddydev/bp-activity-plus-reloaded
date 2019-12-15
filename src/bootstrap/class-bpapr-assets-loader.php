@@ -136,8 +136,8 @@ class BPAPR_Assets_Loader {
 				'root_url'     => BPFB_PLUGIN_URL,
 				'temp_img_url' => BPFB_TEMP_IMAGE_URL,
 				'base_img_url' => BPFB_BASE_IMAGE_URL,
-				'theme'        => BPFB_Data::get( 'theme', 'default' ),
-				'alignment'    => BPFB_Data::get( 'alignment', 'left' ),
+				'theme'        => BPAPR_Data::get( 'theme', 'default' ),
+				'alignment'    => BPAPR_Data::get( 'alignment', 'left' ),
 			)
 		);
 		printf( '<script type="text/javascript">var BPAPRConfig=%s;</script>', json_encode( $data ) );

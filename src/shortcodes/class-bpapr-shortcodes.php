@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Shortcode Generator & Processor.
  */
-class BPFB_Shortcodes {
+class BPAPR_Shortcodes {
 
 	/**
 	 * Registers shotcode processing procedures.
@@ -81,7 +81,7 @@ class BPFB_Shortcodes {
 	 * @return string
 	 */
 	public function process_video_tag( $atts, $content ) {
-		return wp_oembed_get( $content, array( 'width' => BPFB_Data::get( 'oembed_width', 450 ) ) );
+		return wp_oembed_get( $content, array( 'width' => BPAPR_Data::get( 'oembed_width', 450 ) ) );
 	}
 
 	/**

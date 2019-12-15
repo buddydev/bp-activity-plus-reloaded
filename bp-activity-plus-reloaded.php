@@ -30,6 +30,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+// For backward compatibility, we are not renaming the constants.
 define( 'BPFB_PLUGIN_SELF_DIRNAME', basename( dirname( __FILE__ ) ) );
 define( 'BPFB_PROTOCOL', ( is_ssl() ? 'https://' : 'http://' ) );
 
@@ -141,8 +142,8 @@ class BPAPR_Activity_Plus_Reloaded {
 
 		add_action( 'bp_loaded', array( $this, 'setup' ) );
 
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpfb-installer.php';
-		register_activation_hook( __FILE__, array( 'BPFB_Installer', 'install' ) );
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpapr-installer.php';
+		register_activation_hook( __FILE__, array( 'BPAPR_Installer', 'install' ) );
 	}
 
 	/**
@@ -150,21 +151,22 @@ class BPAPR_Activity_Plus_Reloaded {
 	 */
 	public function load() {
 
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data-container.php';
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpfb-data.php';
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bp-apr-functions.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpapr-data-container.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/class-bpapr-data.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bpapr-functions.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/core/bpapr-back-compat.php';
 
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/bootstrap/class-bp-apr-assets-loader.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/bootstrap/class-bpapr-assets-loader.php';
 
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-activity-update-handler.php';
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-preview-handler.php';
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/handlers/class-bpapr-delete-handler.php';
 
-		require_once BPFB_PLUGIN_BASE_DIR . '/src/shortcodes/class-bpfb-shortcodes.php';
+		require_once BPFB_PLUGIN_BASE_DIR . '/src/shortcodes/class-bpapr-shortcodes.php';
 
 		// Group Documents integration.
 		if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
-			require_once BPFB_PLUGIN_BASE_DIR . '/lib/bpfb_group_documents.php';
+			require_once BPFB_PLUGIN_BASE_DIR . '/lib/class-bpapr-group-documents.php';
 		}
 
 		if ( is_admin() ) {
@@ -184,7 +186,7 @@ class BPAPR_Activity_Plus_Reloaded {
 		BPAPR_Delete_Handler::boot();
 
 		BPAPR_Assets_Loader::boot();
-		BPFB_Shortcodes::register();
+		BPAPR_Shortcodes::register();
 	}
 
 	/**

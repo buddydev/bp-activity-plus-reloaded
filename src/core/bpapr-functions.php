@@ -10,6 +10,9 @@
  * @since      1.0.0
  */
 
+// Do not allow direct access over web.
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Get image url.
  *
@@ -17,7 +20,7 @@
  *
  * @return string
  */
-function bpfb_get_image_url( $blog_id ) {
+function bpapr_get_image_url( $blog_id ) {
 	if ( ! $blog_id || ! defined( 'BP_ENABLE_MULTIBLOG' ) || ! BP_ENABLE_MULTIBLOG ) {
 		return str_replace( 'http://', BPFB_PROTOCOL, BPFB_BASE_IMAGE_URL );
 	}
@@ -36,7 +39,7 @@ function bpfb_get_image_url( $blog_id ) {
  *
  * @return string
  */
-function bpfb_get_image_dir( $blog_id ) {
+function bpapr_get_image_dir( $blog_id ) {
 	if ( ! $blog_id || ! defined( 'BP_ENABLE_MULTIBLOG' ) || ! BP_ENABLE_MULTIBLOG ) {
 		return BPFB_BASE_IMAGE_DIR;
 	}
