@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Admin settings helper.
  */
-class BPFB_Admin {
+class BPAPR_Admin {
 
 	/**
 	 * Slug.
@@ -32,7 +32,7 @@ class BPFB_Admin {
 	private $_capability;
 
 	/**
-	 * BPFB_Admin constructor.
+	 * BPAPR_Admin constructor.
 	 */
 	private function __construct() {
 		$this->_capability = bp_core_do_network_admin()

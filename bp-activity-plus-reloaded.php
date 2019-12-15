@@ -168,8 +168,8 @@ class BPAPR_Activity_Plus_Reloaded {
 		}
 
 		if ( is_admin() ) {
-			require_once BPFB_PLUGIN_BASE_DIR . '/src/admin/class-bpfb-admin.php';
-			BPFB_Admin::boot();
+			require_once BPFB_PLUGIN_BASE_DIR . '/src/admin/class-bpapr-admin.php';
+			BPAPR_Admin::boot();
 		}
 
 		do_action( 'bpapr_loaded' );
