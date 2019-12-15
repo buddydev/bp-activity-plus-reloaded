@@ -1,12 +1,12 @@
 === BuddyPress Activity Plus Reloaded ===
-Contributors: buddydev,wpmudev
+Contributors: buddydev
 Original Contributors: wpmudev
-Tags: BuddyPress, Activity, Activity Stream, BuddyPress Activity, Wall, Embed, Media, Youtube, Photos, Facebook, Social Network, Social Networking, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Network Wall, Social Media
+Tags: BuddyPress, Activity Stream, BuddyPress Activity, Social Network, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Network Wall, Social Media
 Requires at least: 5.0
 Tested up to: 5.3
 Stable tag: 1.0.0
 
-BuddyPress Activity Plus Reloaded allows for embedding of oEmbed videos and media in your activities.
+BuddyPress Activity Plus Reloaded allows embedding of oEmbed videos and media as well as external links in your activities.
 
 == Description ==
 
@@ -25,6 +25,9 @@ Here's the quick overview of this plugin's features:
 = Credit =
 BuddyPress Activity Plus Reloaded is a fork of *BuddyPress Activity Plus*(now abandoned) by @wpmudev. We have refactored it to wok with current BuddyPress/WordPress.
  and we plan to maintain and further develop it.
+ We will like to express our sincere gratitude to the @wpmudv team for their cooperation in getting this plugin back.
+
+If you are looking to optimize media, We recommend [Smush](https://wordpress.org/plugins/wp-smushit/) to optimize your BuddyPress media.
 
 = Contribute =
 The plugin is available on gihub. You can contribute by sending pull request, reporting errors and helping others.
@@ -47,7 +50,7 @@ Please use [BuddyDev Support forums](https://buddydev.com/support/forums/).
 
 = What is the difference between MediaPress and this plugin? =
 MediaPress allows creating user gallery, sitewide gallery as well as group galleries too. This plugin only allows upload from activity.
-If you are looking for a simple actiivty media solution, this may fit you. You may want to explore [MediaPress](https://wordpress.org/plugins/mediapress/) to see if that fits your need.
+If you are looking for a simple BuddyPPress activity media solution, this may fit you. You may want to explore [MediaPress](https://wordpress.org/plugins/mediapress/) to see if that fits your need.
 
 = Will you be maintaining this plugin? =
 Yes. Until the media feature comes to BuddyPress core, we will maintain and develop this plugin.

@@ -6,9 +6,6 @@
   },
   "extends": [
     "plugin:@wordpress/eslint-plugin/es5"
-    /*"eslint:recommended",
-    "plugin:es5/no-es2015",
-    "plugin:es5/no-es2016"*/
   ],
 
   "rules": {

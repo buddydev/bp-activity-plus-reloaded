@@ -18,7 +18,7 @@ class Bpfb_Documents {
 		add_action('bpfb_add_ajax_hooks', array($this, 'add_ajax_hooks_handler'));
 		add_action('bpfb_add_cssjs_hooks', array($this, 'add_cssjs_hooks_handler'));
 		add_action('bpfb_code_before_save', array($this, 'code_before_save_handler'));
-		add_action('bpfb_init', array($this, 'create_core_defines'));
+		add_action('bpapr_loaded', array($this, 'create_core_defines'));
 	}
 
 	/**
