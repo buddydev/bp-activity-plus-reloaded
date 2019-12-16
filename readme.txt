@@ -1,9 +1,9 @@
 === BuddyPress Activity Plus Reloaded ===
 Contributors: buddydev
 Original Contributors: wpmudev
-Tags: BuddyPress, Activity Stream, BuddyPress Activity, Social Network, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Network Wall, Social Media
+Tags: BuddyPress, Activity Stream, BuddyPress Activity, BuddyPress Activity Upload, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Media
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.3.1
 Stable tag: 1.0.0
 
 BuddyPress Activity Plus Reloaded allows embedding of oEmbed videos and media as well as external links in your activities.

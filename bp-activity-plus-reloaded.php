@@ -7,6 +7,10 @@
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
+ * Text Domain: buddypress-activity-plus-reloaded
+ * Domain Path: /buddypress-activity-plus-reloaded
+ * License:     GPLv2 or later (license.txt)
+ *
  * @package BuddyPress_Activity_Plus_reloaded
  */
 
@@ -37,7 +41,7 @@ define( 'BPFB_PROTOCOL', ( is_ssl() ? 'https://' : 'http://' ) );
 define( 'BPFB_PLUGIN_BASE_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'BPFB_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-load_plugin_textdomain( 'bpfb', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
+load_plugin_textdomain( 'buddypress-activity-plus-reloaded', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
 
 // Override image limit in wp-config.php.
 if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {

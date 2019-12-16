@@ -65,8 +65,8 @@ class BPAPR_Admin {
 			: 'options-general.php';
 		$this->_page_hook = add_submenu_page(
 			$hook,
-			__( 'BuddyPress Activity Plus', 'bpfb' ),
-			__( 'Activity Plus', 'bpfb' ),
+			__( 'BuddyPress Activity Plus', 'buddypress-activity-plus-reloaded' ),
+			__( 'Activity Plus', 'buddypress-activity-plus-reloaded' ),
 			$this->_capability,
 			'bpfb-settings',
 			array( $this, 'settings_page' )
@@ -144,83 +144,83 @@ class BPAPR_Admin {
 			<form action="" method="POST">
 
 				<fieldset class="appearance section">
-					<legend><?php esc_html_e( 'Appearance', 'bpfb' ); ?></legend>
+					<legend><?php esc_html_e( 'Appearance', 'buddypress-activity-plus-reloaded' ); ?></legend>
 
 					<?php if ( current_theme_supports( 'bpfb_interface_style' ) || current_theme_supports( 'bpfb_toolbar_icons' ) ) { ?>
 						<div class="updated below-h2">
-							<p><?php esc_html_e( 'Your BuddyPress theme incorporates Activity Plus style overrides. Respecting the selection you make in the &quot;Appearance&quot; section is entirely up to your theme.', 'bpfb' ); ?></p>
+							<p><?php esc_html_e( 'Your BuddyPress theme incorporates Activity Plus style overrides. Respecting the selection you make in the &quot;Appearance&quot; section is entirely up to your theme.', 'buddypress-activity-plus-reloaded' ); ?></p>
 						</div>
 					<?php } ?>
 
 					<fieldset class="theme option">
-						<legend><?php esc_html_e( 'Theme', 'bpfb' ); ?></legend>
+						<legend><?php esc_html_e( 'Theme', 'buddypress-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-theme-default">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-legacy.png"/>
 							<input type="radio" id="bpfb-theme-default" name="bpfb[theme]"
 								   value="" <?php checked( $theme, '' ); ?> />
-							<?php esc_html_e( 'Default (legacy)', 'bpfb' ); ?>
+							<?php esc_html_e( 'Default (legacy)', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-new">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-new.png"/>
 							<input type="radio" id="bpfb-theme-new" name="bpfb[theme]"
 								   value="new" <?php checked( $theme, 'new' ); ?> />
-							<?php esc_html_e( 'New', 'bpfb' ); ?>
+							<?php esc_html_e( 'New', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-round">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-round.png"/>
 							<input type="radio" id="bpfb-theme-round" name="bpfb[theme]"
 								   value="round" <?php checked( $theme, 'round' ); ?> />
-							<?php esc_html_e( 'Round', 'bpfb' ); ?>
+							<?php esc_html_e( 'Round', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 					<fieldset class="alignment option">
-						<legend><?php esc_html_e( 'Alignment', 'bpfb' ); ?></legend>
+						<legend><?php esc_html_e( 'Alignment', 'buddypress-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-theme-alignment-left">
 							<input type="radio" id="bpfb-theme-alignment-left" name="bpfb[alignment]"
 								   value="left" <?php checked( $alignment, 'left' ); ?> />
-							<?php esc_html_e( 'Left', 'bpfb' ); ?>
+							<?php esc_html_e( 'Left', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-alignment-right">
 							<input type="radio" id="bpfb-theme-alignment-right" name="bpfb[alignment]"
 								   value="right" <?php checked( $alignment, 'right' ); ?> />
-							<?php esc_html_e( 'Right', 'bpfb' ); ?>
+							<?php esc_html_e( 'Right', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 				</fieldset>
 
 
 				<fieldset class="functional section">
-					<legend><?php esc_html_e( 'Functional', 'bpfb' ); ?></legend>
+					<legend><?php esc_html_e( 'Functional', 'buddypress-activity-plus-reloaded' ); ?></legend>
 
 					<fieldset class="oembed option">
-						<legend><?php esc_html_e( 'oEmbed', 'bpfb' ); ?></legend>
+						<legend><?php esc_html_e( 'oEmbed', 'buddypress-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'bpfb' ), BPFB_OEMBED_WIDTH ); ?></p>
+								<p><?php printf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'buddypress-activity-plus-reloaded' ), BPFB_OEMBED_WIDTH ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-oembed-width">
-							<?php esc_html_e( 'Width', 'bpfb' ) ?>
+							<?php esc_html_e( 'Width', 'buddypress-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-oembed-width" name="bpfb[oembed_width]" size="4"
 								   value="<?php echo (int) $oembed_width; ?>" <?php echo( defined( 'BPFB_OEMBED_WIDTH' ) ? 'disabled="disabled"' : '' ); ?> />
 							px
 						</label>
 					</fieldset>
 					<fieldset class="thumbnail option">
-						<legend><?php esc_html_e( 'Image thumbnails', 'bpfb' ); ?></legend>
+						<legend><?php esc_html_e( 'Image thumbnails', 'buddypress-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'bpfb' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
+								<p><?php printf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'buddypress-activity-plus-reloaded' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-thumbnail_size-width">
-							<?php esc_html_e( 'Width', 'bpfb' ) ?>
+							<?php esc_html_e( 'Width', 'buddypress-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-thumbnail_size-width" name="bpfb[thumbnail_size_width]" size="4"
 								   value="<?php echo (int) $thumb_w; ?>" <?php echo( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ? 'disabled="disabled"' : '' ); ?> />
 							px
 						</label>
 						<label for="bpfb-thumbnail_size-height">
-							<?php esc_html_e( 'Height', 'bpfb' ) ?>
+							<?php esc_html_e( 'Height', 'buddypress-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-thumbnail_size-height" name="bpfb[thumbnail_size_height]"
 								   size="4"
 								   value="<?php echo (int) $thumb_h; ?>" <?php echo( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ? 'disabled="disabled"' : '' ); ?> />
@@ -228,11 +228,11 @@ class BPAPR_Admin {
 						</label>
 					</fieldset>
 					<fieldset class="bpfb-misc option">
-						<legend><?php esc_html_e( 'Misc', 'bpfb' ); ?></legend>
+						<legend><?php esc_html_e( 'Misc', 'buddypress-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-cleanup_images">
 							<input type="checkbox" id="bpfb-cleanup_images" name="bpfb[cleanup_images]"
 								   value="1" <?php checked( $cleanup_images, true ); ?> />
-							<?php esc_html_e( 'Clean up images?', 'bpfb' ); ?>
+							<?php esc_html_e( 'Clean up images?', 'buddypress-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 				</fieldset>

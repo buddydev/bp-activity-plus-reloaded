@@ -56,8 +56,8 @@ class BPAPR_Documents {
 		add_action( 'wp_print_scripts', array( $this, 'add_js_globals' ) );
 		wp_enqueue_script( 'bpfb_group_documents', BPFB_PLUGIN_URL . '/assets/js/bpfb_group_documents.js', array( 'bp-activity-plus-reloaded' ) );
 		wp_localize_script( 'bpfb_group_documents', 'l10nBpfbDocs', array(
-			'add_documents'     => __( 'Add documents', 'bpfb' ),
-			'no_group_selected' => __( 'Please select a group to upload to', 'bpfb' ),
+			'add_documents'     => __( 'Add documents', 'buddypress-activity-plus-reloaded' ),
+			'no_group_selected' => __( 'Please select a group to upload to', 'buddypress-activity-plus-reloaded' ),
 		) );
 	}
 
@@ -239,7 +239,7 @@ class BPAPR_Documents {
 		}
 
 		return sprintf(
-			__( '%s uploaded new file(s): %s to %s', 'bpfb' ),
+			__( '%s uploaded new file(s): %s to %s', 'buddypress-activity-plus-reloaded' ),
 			bp_core_get_userlink( $bp->loggedin_user->id ),
 			join( ', ', $uploaded ),
 			'<a href="' . bp_get_group_permalink( $group ) . '">' . bp_get_group_name( $group ) . '</a>'
