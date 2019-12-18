@@ -44,8 +44,8 @@ class BPAPR_Preview_Handler {
 	public function ajax_preview_video() {
 		$url      = ! empty( $_POST['data'] ) ? esc_url( $_POST['data'] ) : false;
 		$url      = preg_match( '/^https?:\/\//i', $url ) ? $url : BPFB_PROTOCOL . $url;
-		$warning  = __( 'There has been an error processing your request', 'buddypress-activity-plus-reloaded' );
-		$response = $url ? __( 'Processing...', 'buddypress-activity-plus-reloaded' ) : $warning;
+		$warning  = __( 'There has been an error processing your request', 'bp-activity-plus-reloaded' );
+		$response = $url ? __( 'Processing...', 'bp-activity-plus-reloaded' ) : $warning;
 		$ret      = wp_oembed_get( $url );
 		echo $ret ? $ret : $warning;
 		exit();
@@ -57,8 +57,8 @@ class BPAPR_Preview_Handler {
 	 */
 	public function ajax_preview_link() {
 		$url      = ! empty( $_POST['data'] ) ? esc_url( $_POST['data'] ) : '';
-		$warning  = __( 'There has been an error processing your request', 'buddypress-activity-plus-reloaded' );
-		$response = $url ? __( 'Processing...', 'buddypress-activity-plus-reloaded' ) : $warning;
+		$warning  = __( 'There has been an error processing your request', 'bp-activity-plus-reloaded' );
+		$response = $url ? __( 'Processing...', 'bp-activity-plus-reloaded' ) : $warning;
 
 		$images = array();
 		$title  = $warning;

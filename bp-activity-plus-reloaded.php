@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: BuddyPress Activity Plus Reloaded
- * Plugin URI: https://github.com/buddydev/buddypress-activity-plus-reloaded
+ * Plugin Name: Activity Plus Reloaded for BuddyPress
+ * Plugin URI: https://github.com/buddydev/bp-activity-plus-reloaded
  * Description: A Facebook-style media sharing improvement for the activity box.
  * Version: 1.0.0
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
- * Text Domain: buddypress-activity-plus-reloaded
- * Domain Path: /buddypress-activity-plus-reloaded
+ * Text Domain: bp-activity-plus-reloaded
+ * Domain Path: /languages
  * License:     GPLv2 or later (license.txt)
  *
  * @package BuddyPress_Activity_Plus_reloaded
@@ -41,7 +41,7 @@ define( 'BPFB_PROTOCOL', ( is_ssl() ? 'https://' : 'http://' ) );
 define( 'BPFB_PLUGIN_BASE_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'BPFB_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-load_plugin_textdomain( 'buddypress-activity-plus-reloaded', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
+load_plugin_textdomain( 'bp-activity-plus-reloaded', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
 
 // Override image limit in wp-config.php.
 if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
