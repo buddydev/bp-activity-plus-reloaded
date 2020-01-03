@@ -117,6 +117,8 @@ class BPAPR_Assets_Loader {
 			'images_limit_exceeded'    => sprintf( __( "You tried to add too many images, only %d will be posted.", 'bp-activity-plus-reloaded' ), BPFB_IMAGE_LIMIT ),
 			// Variables
 			'_max_images'              => BPFB_IMAGE_LIMIT,
+			'isGroup'                  => bp_is_group() ? 1 : 0,
+			'groupID'                  => bp_is_group() ? bp_get_current_group_id() : 0,
 		);
 
 	}

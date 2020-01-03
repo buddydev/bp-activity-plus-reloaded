@@ -468,7 +468,7 @@ var _bpfbActiveHandler = false;
 				var $stream = $( '#activity-stream' ),
 					$list = $stream.find( '.activity-list' );
 				params = _bpfbActiveHandler.get();
-				groupID = $( '#whats-new-post-in' ).length ? $( '#whats-new-post-in' ).val() : 0;
+				groupID = $( '#whats-new-post-in' ).length ? $( '#whats-new-post-in' ).val() : BPAPRJSData.groupID;
 				$.post( ajaxurl, {
 					action: 'bpfb_update_activity_contents',
 					data: params,
