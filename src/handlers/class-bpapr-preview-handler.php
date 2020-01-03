@@ -89,6 +89,20 @@ class BPAPR_Preview_Handler {
 		}
 
 		$html = str_get_html( $page );
+
+		if ( ! $html ) {
+			header( 'Content-type: application/json' );
+			echo json_encode(
+				array(
+					'url'    => $url,
+					'images' => $images,
+					'title'  => $title,
+					'text'   => $text,
+				)
+			);
+			exit( 0 );
+		}
+
 		$str  = $html->find( 'text' );
 
 		if ( empty( $str ) ) {
