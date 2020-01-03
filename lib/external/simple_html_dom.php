@@ -110,7 +110,7 @@ function str_get_html(
 		$defaultSpanText
 	);
 
-	if (empty($str) || strlen($str) > MAX_FILE_SIZE) {
+	if (empty($str) ) {//|| strlen($str) > MAX_FILE_SIZE
 		$dom->clear();
 		return false;
 	}
