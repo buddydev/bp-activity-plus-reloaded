@@ -3,7 +3,7 @@ Contributors: buddydev
 Original Contributors: wpmudev
 Tags: BuddyPress, Activity Stream, BuddyPress Activity, BuddyPress Activity Upload, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Media
 Requires at least: 5.0
-Tested up to: 5.3.1
+Tested up to: 5.3.2
 Stable tag: 1.0.0
 
 Activity Plus Reloaded for BuddyPress allows embedding of oEmbed videos and media as well as external links in your activities.
@@ -22,6 +22,8 @@ Here's the quick overview of this plugin's features:
  * Embedding a link also allows you to choose a thumbnail image from a list of images on the site's homepage
  * Works perfectly with any theme based on the BuddyPress Default theme
 
+Blog Post :[Introducing BuddyPress Activity Plus Reloaded](https://buddydev.com/introducing-buddypress-activity-plus-reloaded/)
+
 = Credit =
 Activity Plus Reloaded for BuddyPress is a fork of *BuddyPress Activity Plus*(now abandoned) by @wpmudev. We have refactored it to wok with current BuddyPress/WordPress.
  and we plan to maintain and further develop it.
@@ -33,7 +35,6 @@ If you are looking to optimize media, We recommend [Smush](https://wordpress.org
 The plugin is available on gihub. You can contribute by sending pull request, reporting errors and helping others.
 Github repository: [https://github.com/buddydev/bp-activity-plus-reloaded](https://github.com/buddydev/bp-activity-plus-reloaded)
 Support & reporting Issues: [BuddyDev Forums](https://buddydev.com/support/forums/)
-
 
 == Installation ==
 1.  Download the plugin file
@@ -57,10 +58,9 @@ Yes. Until the media feature comes to BuddyPress core, we will maintain and deve
 
 == Screenshots ==
 
-1. Embed Activity Window
-2. Photos and websites are easily embedded
-3. Image galleries right in the activity stream
-4. Video in your activity stream
+1. Photos and websites are easily embedded screenshot-1.png
+2. Image galleries right in the activity stream screenshot-2.png
+3. Video in your activity stream screenshot-3.png
 
 == Changelog ==
 
