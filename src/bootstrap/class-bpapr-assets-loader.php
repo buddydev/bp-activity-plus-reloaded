@@ -32,7 +32,7 @@ class BPAPR_Assets_Loader {
 	public static function boot() {
 		$self = new self();
 		add_action( 'bp_enqueue_scripts', array( $self, 'register' ) );
-		add_action( 'bp_enqueue_scripts', array( $self, 'enqueue' ) );
+		add_action( 'bp_enqueue_scripts', array( $self, 'enqueue' ), 11 );
 		add_action( 'wp_head', array( $self, 'load_extra_configs' ) );
 	}
 

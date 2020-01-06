@@ -518,4 +518,5 @@ if (
 			$( this ).width( $( this ).parents( 'div' ).width() );
 		} );
 	} );
+
 }( jQuery ) );
