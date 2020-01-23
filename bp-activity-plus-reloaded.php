@@ -170,7 +170,7 @@ class BPAPR_Activity_Plus_Reloaded {
 
 		// Group Documents integration.
 		if ( defined( 'BP_GROUP_DOCUMENTS_IS_INSTALLED' ) && BP_GROUP_DOCUMENTS_IS_INSTALLED ) {
-			require_once BPFB_PLUGIN_BASE_DIR . '/lib/class-bpapr-group-documents.php';
+			// require_once BPFB_PLUGIN_BASE_DIR . '/lib/class-bpapr-group-documents.php';
 		}
 
 		if ( is_admin() ) {
