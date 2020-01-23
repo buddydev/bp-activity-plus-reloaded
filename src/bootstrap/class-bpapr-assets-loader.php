@@ -76,7 +76,7 @@ class BPAPR_Assets_Loader {
 	 */
 	private function register_vendors() {
 
-		$version = '1.0.0';
+		$version = bpapr_activity_plus_reloaded()->version;
 
 		wp_register_script( 'qq-file-uploader', BPFB_PLUGIN_URL . '/assets/js/external/fileuploader.js', array( 'jquery' ), $version );
 
@@ -87,7 +87,7 @@ class BPAPR_Assets_Loader {
 	 */
 	private function register_core() {
 		// @todo change later.
-		$version = '1.0.0';
+		$version = bpapr_activity_plus_reloaded()->version;
 
 		wp_register_script( 'bp-activity-plus-reloaded', BPFB_PLUGIN_URL . '/assets/js/bp-activity-plus-reloaded.js', array( 'qq-file-uploader' ), $version );
 
