@@ -35,6 +35,7 @@ class BPAPR_Data_Container {
 				'image_limit'    => 5,
 				'links_target'   => false,
 				'cleanup_images' => false,
+				'link_target'    => '',
 			)
 		);
 	}

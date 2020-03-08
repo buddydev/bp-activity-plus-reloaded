@@ -125,6 +125,11 @@ class BPAPR_Admin {
 			? (int) $raw['cleanup_images']
 			: false;
 
+		$raw['link_target'] = empty( $raw['link_target'] ) || ! in_array( $raw['link_target'], array(
+			'same',
+			'external'
+		) ) ? '' : trim( $raw['link_target'] );
+
 		update_option( 'bpfb', $raw );
 		wp_safe_redirect( add_query_arg( array( 'updated' => true ) ) );
 	}
@@ -138,6 +143,7 @@ class BPAPR_Admin {
 		$oembed_width   = BPAPR_Data::get( 'oembed_width', 450 );
 		$alignment      = BPAPR_Data::get( 'alignment', 'left' );
 		$cleanup_images = BPAPR_Data::get( 'cleanup_images', false );
+		$link_target = BPAPR_Data::get( 'link_target', '' );
 		?>
 		<div class="wrap bpfb">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
@@ -227,6 +233,17 @@ class BPAPR_Admin {
 							px
 						</label>
 					</fieldset>
+
+                    <fieldset class="bpfb-link option">
+                        <legend><?php esc_html_e( 'Link', 'bp-activity-plus-reloaded' ); ?></legend>
+                        <label for="bpfb-link_target"> <?php _e( 'Link Target', 'bp-activity-plus-reloaded' );?>
+                            <select name="bpfb[link_target]">
+	                            <option value="same" <?php selected('same', $link_target );?>><?php _e( 'Same Window', 'bp-activity-plus-reloaded' );?></option>
+	                            <option value="external" <?php selected('external', $link_target );?>><?php _e( 'External Window/Tab', 'bp-activity-plus-reloaded');?></option>
+                            </select>
+                        </label>
+                    </fieldset>
+
 					<fieldset class="bpfb-misc option">
 						<legend><?php esc_html_e( 'Misc', 'bp-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-cleanup_images">

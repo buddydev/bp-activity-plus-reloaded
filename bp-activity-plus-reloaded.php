@@ -3,7 +3,7 @@
  * Plugin Name: Activity Plus Reloaded for BuddyPress
  * Plugin URI: https://github.com/buddydev/bp-activity-plus-reloaded
  * Description: A Facebook-style media sharing improvement for the activity box.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
@@ -48,10 +48,6 @@ if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
 	define( 'BPFB_IMAGE_LIMIT', 5 );
 }
 
-// Override link target preference in wp-config.php.
-if ( ! defined( 'BPFB_LINKS_TARGET' ) ) {
-	define( 'BPFB_LINKS_TARGET', false );
-}
 
 $wp_upload_dir = wp_upload_dir();
 define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
@@ -74,7 +70,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.2';
+	private $version = '1.0.3';
 
 	/**
 	 * Class instance
@@ -144,6 +140,7 @@ class BPAPR_Activity_Plus_Reloaded {
 		// Only fire off if BP is actually loaded.
 		add_action( 'bp_loaded', array( $this, 'load' ) );
 
+		add_action( 'bp_loaded', array( $this, 'setup_constants' ) );
 		add_action( 'bp_loaded', array( $this, 'setup' ) );
 
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpapr-installer.php';
@@ -179,6 +176,15 @@ class BPAPR_Activity_Plus_Reloaded {
 		}
 
 		do_action( 'bpapr_loaded' );
+	}
+
+	/**
+	 * Setup constants.
+	 */
+	public function setup_constants() {
+		if ( ! defined( 'BPFB_LINKS_TARGET' ) ) {
+			define( 'BPFB_LINKS_TARGET', BPAPR_Data::get( 'link_target', 'same' ) );
+		}
 	}
 
 	/**

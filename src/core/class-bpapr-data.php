@@ -39,8 +39,8 @@ class BPAPR_Data {
 	/**
 	 * Get the container object.
 	 *
-	 * @param array $option options.
-	 * @param bool  $fallback should use fallback.
+	 * @param string $option options.
+	 * @param bool   $fallback should use fallback.
 	 *
 	 * @return BPAPR_Data_Container
 	 */
