@@ -4,203 +4,149 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Activity Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-13 04:34:37+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-01-23 12:08+0530\n"
-"X-Generator: Poedit 2.0.6\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: 2020-03-09 04:00+0530\n"
+"PO-Revision-Date: 2020-03-09 04:00+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: _e;_ex:1,2c;__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: lib/external\n"
+"X-Poedit-SearchPathExcluded-1: assets/js/external\n"
 
-#: bpfb.php:50
-msgid ""
-"There was an issue determining where BuddyPress Activity Plus plugin is "
-"installed. Please reinstall."
-msgstr ""
-
-#: lib/bpfb_group_documents.php:48
+#: lib/class-bpapr-group-documents.php:59
 msgid "Add documents"
 msgstr ""
 
-#: lib/bpfb_group_documents.php:49
+#: lib/class-bpapr-group-documents.php:60
 msgid "Please select a group to upload to"
 msgstr ""
 
-#: lib/bpfb_group_documents.php:201
+#: lib/class-bpapr-group-documents.php:242
+#, php-format
 msgid "%s uploaded new file(s): %s to %s"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:32
+#: src/admin/class-bpapr-admin.php:68
 msgid "BuddyPress Activity Plus"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:33
+#: src/admin/class-bpapr-admin.php:69
 msgid "Activity Plus"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:92
-msgid "Appearance"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:96
-msgid ""
-"Your BuddyPress theme incorporates Activity Plus style overrides. "
-"Respecting the selection you make in the &quot;Appearance&quot; section is "
-"entirely up to your theme."
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:101
-msgid "Theme"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:105
-msgid "Default (legacy)"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:110
-msgid "New"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:115
-msgid "Round"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:119
-msgid "Alignment"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:122
-msgid "Left"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:126
-msgid "Right"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:133
-msgid "Functional"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:136
-msgid "oEmbed"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:139
+#: src/admin/class-bpapr-admin.php:205
+#, php-format
 msgid ""
 "Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</"
 "code> define value (%s). Remove this define to enable this option."
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:143 lib/class_bpfb_admin_pages.php:155
-msgid "Width"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:148
-msgid "Image thumbnails"
-msgstr ""
-
-#: lib/class_bpfb_admin_pages.php:151
+#: src/admin/class-bpapr-admin.php:219
+#, php-format
 msgid ""
 "Your thumbnail dimensions will be dictated by the "
-"<code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this "
-"define to enable these options."
+"<code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define "
+"to enable these options."
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:159
-msgid "Height"
+#: src/admin/class-bpapr-admin.php:239
+msgid "Link Target"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:164
-msgid "Misc"
+#: src/admin/class-bpapr-admin.php:241
+msgid "Same Window"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:167
-msgid "Clean up images?"
+#: src/admin/class-bpapr-admin.php:242
+msgid "External Window/Tab"
 msgstr ""
 
-#: lib/class_bpfb_admin_pages.php:174
-msgid "Save"
-msgstr ""
-
-#: lib/class_bpfb_binder.php:174
+#: src/bootstrap/class-bpapr-assets-loader.php:100
 msgid "Add images"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:175
+#: src/bootstrap/class-bpapr-assets-loader.php:101
 msgid "Submit images post"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:176
+#: src/bootstrap/class-bpapr-assets-loader.php:102
 msgid "Add image URL"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:177
+#: src/bootstrap/class-bpapr-assets-loader.php:103
 msgid "Add another image URL"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:178
+#: src/bootstrap/class-bpapr-assets-loader.php:104
 msgid "Add videos"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:179
+#: src/bootstrap/class-bpapr-assets-loader.php:105
 msgid "Submit video post"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:180
+#: src/bootstrap/class-bpapr-assets-loader.php:106
 msgid "Add links"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:181
+#: src/bootstrap/class-bpapr-assets-loader.php:107
 msgid "Submit link post"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:182
+#: src/bootstrap/class-bpapr-assets-loader.php:108
 msgid "Add"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:183
+#: src/bootstrap/class-bpapr-assets-loader.php:109
 msgid "Cancel"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:184
+#: src/bootstrap/class-bpapr-assets-loader.php:110
 msgid "Preview"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:185
+#: src/bootstrap/class-bpapr-assets-loader.php:111
 msgid "Drop files here to upload"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:186
+#: src/bootstrap/class-bpapr-assets-loader.php:112
 msgid "Upload a file"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:187
+#: src/bootstrap/class-bpapr-assets-loader.php:113
 msgid "Choose thumbnail"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:188
+#: src/bootstrap/class-bpapr-assets-loader.php:114
 msgid "No thumbnail"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:189
+#: src/bootstrap/class-bpapr-assets-loader.php:115
 msgid "Paste video URL here"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:190
+#: src/bootstrap/class-bpapr-assets-loader.php:116
 msgid "Paste link here"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:191
+#: src/bootstrap/class-bpapr-assets-loader.php:117
+#, php-format
 msgid "You tried to add too many images, only %d will be posted."
 msgstr ""
 
-#: lib/class_bpfb_binder.php:217 lib/class_bpfb_binder.php:234
+#: src/handlers/class-bpapr-preview-handler.php:47
+#: src/handlers/class-bpapr-preview-handler.php:60
 msgid "There has been an error processing your request"
 msgstr ""
 
-#: lib/class_bpfb_binder.php:218 lib/class_bpfb_binder.php:235
+#: src/handlers/class-bpapr-preview-handler.php:48
+#: src/handlers/class-bpapr-preview-handler.php:61
 msgid "Processing..."
 msgstr ""
