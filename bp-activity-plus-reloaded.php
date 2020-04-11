@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Activity Plus Reloaded for BuddyPress
- * Plugin URI: https://github.com/buddydev/bp-activity-plus-reloaded
+ * Plugin URI: https://buddydev.com/plugins/bp-activity-plus-reloaded/
  * Description: A Facebook-style media sharing improvement for the activity box.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
@@ -48,7 +48,6 @@ if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
 	define( 'BPFB_IMAGE_LIMIT', 5 );
 }
 
-
 $wp_upload_dir = wp_upload_dir();
 define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
 define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
@@ -70,7 +69,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.3';
+	private $version = '1.0.4';
 
 	/**
 	 * Class instance
@@ -105,7 +104,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 *
 	 * @var array
 	 */
-	private static $protected = array( 'instance' );
+	private static $guarded = array( 'instance' );
 
 	/**
 	 * Constructor.
@@ -221,7 +220,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 */
 	public function __get( $name ) {
 
-		if ( ! in_array( $name, self::$protected, true ) && property_exists( $this, $name ) ) {
+		if ( ! in_array( $name, self::$guarded, true ) && property_exists( $this, $name ) ) {
 			return $this->{$name};
 		}
 
