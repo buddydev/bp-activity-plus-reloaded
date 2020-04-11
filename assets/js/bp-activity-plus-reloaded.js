@@ -426,7 +426,7 @@ var _bpfbActiveHandler = false;
 		 */
 		function setup() {
 			$form = $( '#whats-new-form' );
-			$text = $form.find( 'textarea[name="whats-new"]' );
+			$text = $form.find( '#whats-new-textarea [name="whats-new"]' );
 			$textContainer = $form.find( '#whats-new-textarea' );
 			createLayoutMarkup();
 			$( '#bpfb_addPhotos' ).click( function() {
@@ -464,19 +464,38 @@ var _bpfbActiveHandler = false;
 				$( this ).addClass( 'bpfb_active' );
 			} );
 			$( document ).on( 'click', '#bpfb_submit', function() {
-				var params, groupID;
+				var params, groupID, content, $postBox;
+				$postBox = $( '#whats-new-textarea #whats-new' ).first();
 				var $stream = $( '#activity-stream' ),
 					$list = $stream.find( '.activity-list' );
 				params = _bpfbActiveHandler.get();
+				if ( $postBox.is( 'textarea' ) ) {
+					content = $postBox.val();
+				} else if ( $postBox.is( 'div' ) ) {
+					$postBox.find( 'img.emojioneemoji' ).replaceWith( function() {
+						return this.dataset.emojiChar;
+					} );
+					content = $postBox.html();
+					content = content.replace( /<br>|<div>/gi, '\n' ).replace( /<\/div>/gi, '' );
+				} else {
+					content = '';
+				}
+
 				groupID = $( '#whats-new-post-in' ).length ? $( '#whats-new-post-in' ).val() : BPAPRJSData.groupID;
 				$.post( ajaxurl, {
 					action: 'bpfb_update_activity_contents',
 					data: params,
-					content: $text.val(),
+					content: content,
 					group_id: groupID
 				}, function( data ) {
 					_bpfbActiveHandler.destroy();
-					$text.val( '' );
+					// reset content.
+					if ( $postBox.is( 'textarea' ) ) {
+						$text.val( '' );
+					} else if ( $postBox.is( 'div' ) ) {
+						$postBox.html( '' );
+					}
+
 					if ( $list.length ) {
 						$list.prepend( data.activity );
 					} else {
@@ -518,5 +537,4 @@ if (
 			$( this ).width( $( this ).parents( 'div' ).width() );
 		} );
 	} );
-
 }( jQuery ) );
