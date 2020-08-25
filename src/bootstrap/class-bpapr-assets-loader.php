@@ -135,13 +135,15 @@ class BPAPR_Assets_Loader {
 		$data = apply_filters(
 			'bpfb_js_data_object',
 			array(
-				'root_url'     => BPFB_PLUGIN_URL,
-				'temp_img_url' => BPFB_TEMP_IMAGE_URL,
-				'base_img_url' => BPFB_BASE_IMAGE_URL,
-				'theme'        => BPAPR_Data::get( 'theme', 'default' ),
-				'alignment'    => BPAPR_Data::get( 'alignment', 'left' ),
+				'root_url'      => BPFB_PLUGIN_URL,
+				'temp_img_url'  => BPFB_TEMP_IMAGE_URL,
+				'base_img_url'  => BPFB_BASE_IMAGE_URL,
+				'theme'         => BPAPR_Data::get( 'theme', 'default' ),
+				'alignment'     => BPAPR_Data::get( 'alignment', 'left' ),
+				'allowed_items' => BPAPR_Data::get( 'allowed_items', array( 'photos', 'videos', 'links' ) ),
 			)
 		);
+
 		printf( '<script type="text/javascript">var BPAPRConfig=%s;</script>', json_encode( $data ) );
 
 		if ( 'default' === $data['theme'] || current_theme_supports( 'bpfb_toolbar_icons' ) ) {

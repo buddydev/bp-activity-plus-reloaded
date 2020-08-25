@@ -124,6 +124,9 @@ class BPAPR_Admin {
 		$raw['cleanup_images']        = ! empty( $raw['cleanup_images'] )
 			? (int) $raw['cleanup_images']
 			: false;
+		$raw['allowed_items']        = ! empty( $raw['allowed_items'] )
+			? $raw['allowed_items']
+			: array();
 
 		$raw['link_target'] = empty( $raw['link_target'] ) || ! in_array( $raw['link_target'], array(
 			'same',
@@ -143,7 +146,8 @@ class BPAPR_Admin {
 		$oembed_width   = BPAPR_Data::get( 'oembed_width', 450 );
 		$alignment      = BPAPR_Data::get( 'alignment', 'left' );
 		$cleanup_images = BPAPR_Data::get( 'cleanup_images', false );
-		$link_target = BPAPR_Data::get( 'link_target', '' );
+		$allowed_items  = BPAPR_Data::get( 'allowed_items', array( 'photos', 'videos', 'links' ) );
+		$link_target    = BPAPR_Data::get( 'link_target', '' );
 		?>
 		<div class="wrap bpfb">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
@@ -179,7 +183,9 @@ class BPAPR_Admin {
 							<?php esc_html_e( 'Round', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
-					<fieldset class="alignment option">
+
+
+                    <fieldset class="alignment option">
 						<legend><?php esc_html_e( 'Alignment', 'bp-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-theme-alignment-left">
 							<input type="radio" id="bpfb-theme-alignment-left" name="bpfb[alignment]"
@@ -252,6 +258,25 @@ class BPAPR_Admin {
 							<?php esc_html_e( 'Clean up images?', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
+
+                    <fieldset class="bpfb-allowed-items option">
+                        <legend><?php esc_html_e( 'Allowed Items', 'bp-activity-plus-reloaded' ); ?></legend>
+                        <label for="bpfb-allowed_items_photos">
+                            <input type="checkbox" id="bpfb-allowed_items_photos" name="bpfb[allowed_items][]"
+                                   value="photos" <?php checked( in_array( 'photos', $allowed_items ), true ); ?> />
+							<?php esc_html_e( 'Photos', 'bp-activity-plus-reloaded' ); ?>
+                        </label>
+                        <label for="bpfb-allowed_items_videos">
+                            <input type="checkbox" id="bpfb-allowed_items_videos" name="bpfb[allowed_items][]"
+                                   value="videos" <?php checked( in_array( 'videos', $allowed_items ), true ); ?> />
+		                    <?php esc_html_e( 'Videos', 'bp-activity-plus-reloaded' ); ?>
+                        </label>
+                        <label for="bpfb-allowed_items_links">
+                            <input type="checkbox" id="bpfb-allowed_items_links" name="bpfb[allowed_items][]"
+                                   value="links" <?php checked( in_array( 'links', $allowed_items ), true ); ?> />
+		                    <?php esc_html_e( 'Links', 'bp-activity-plus-reloaded' ); ?>
+                        </label>
+                    </fieldset>
 				</fieldset>
 
 				<p>

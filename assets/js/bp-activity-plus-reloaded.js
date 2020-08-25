@@ -401,13 +401,30 @@ var _bpfbActiveHandler = false;
 		 * Main interface markup creation.
 		 */
 		function createLayoutMarkup() {
+
+			if ( BPAPRConfig.allowed_items && ! BPAPRConfig.allowed_items.length ) {
+				return;
+			}
+
+			var photosItem = '';
+			var videosItem = '';
+			var linkItems = '';
+
+			if ( $.inArray( 'photos', BPAPRConfig.allowed_items ) !== -1 ) {
+				photosItem = '<a href="#photos" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_photos_tip + '" id="bpfb_addPhotos"><span>' + BPAPRJSData.add_photos + '</span></a>&nbsp;';
+			}
+
+			if ( $.inArray( 'videos', BPAPRConfig.allowed_items ) !== -1 ) {
+				videosItem = '<a href="#videos" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_videos + '" id="bpfb_addVideos"><span>' + BPAPRJSData.add_videos + '</span></a>&nbsp;';
+			}
+
+			if ( $.inArray( 'links', BPAPRConfig.allowed_items ) !== -1 ) {
+				linkItems = '<a href="#links" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_links + '" id="bpfb_addLinks"><span>' + BPAPRJSData.add_links + '</span></a>';
+			}
+
 			var html = '<div class="bpfb_actions_container bpfb-theme-' + BPAPRConfig.theme.replace( /[^-_a-z0-9]/ig, '' ) + ' bpfb-alignment-' + BPAPRConfig.alignment.replace( /[^-_a-z0-9]/ig, '' ) + '">' +
-		'<div class="bpfb_toolbar_container">' +
-			'<a href="#photos" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_photos_tip + '" id="bpfb_addPhotos"><span>' + BPAPRJSData.add_photos + '</span></a>' +
-			'&nbsp;' +
-			'<a href="#videos" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_videos + '" id="bpfb_addVideos"><span>' + BPAPRJSData.add_videos + '</span></a>' +
-			'&nbsp;' +
-			'<a href="#links" class="bpfb_toolbarItem" title="' + BPAPRJSData.add_links + '" id="bpfb_addLinks"><span>' + BPAPRJSData.add_links + '</span></a>' +
+		'<div class="bpfb_toolbar_container">'
+				+ photosItem +  videosItem + linkItems +
 		'</div>' +
 		'<div class="bpfb_controls_container">' +
 		'</div>' +
