@@ -91,7 +91,10 @@ class qqFileUploader {
 
         if ($postSize < $this->sizeLimit || $uploadSize < $this->sizeLimit){
             $size = max(1, $this->sizeLimit / 1024 / 1024) . 'M';
-            die("{'error':'increase post_max_size and upload_max_filesize to $size'}");
+
+            $message = sprintf( __( 'increase post_max_size and upload_max_filesize to %s', 'bp-activity-plus-reloaded' ), $size );
+
+	        die( "{'error':$message}" );
         }
     }
 
@@ -111,32 +114,36 @@ class qqFileUploader {
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
         if (!is_writable($uploadDirectory)){
-            return array('error' => "Server error. Upload directory isn't writable.");
+	        $error_message = __( 'Server error. Upload directory isn\'t writable.', 'bp-activity-plus-reloaded' );
+            return array('error' => $error_message);
         }
 
-        if (!$this->file){
-            return array('error' => 'No files were uploaded.');
-        }
+	    if ( ! $this->file ) {
+		    return array( 'error' => __( 'No files were uploaded.', 'bp-activity-plus-reloaded' ) );
+	    }
 
         $size = $this->file->getSize();
 
-        if ($size == 0) {
-            return array('error' => 'File is empty');
-        }
+	    if ( $size == 0 ) {
+		    return array( 'error' => __( 'File is empty', 'bp-activity-plus-reloaded' ) );
+	    }
 
-        if ($size > $this->sizeLimit) {
-            return array('error' => 'File is too large');
-        }
+	    if ( $size > $this->sizeLimit ) {
+		    return array( 'error' => __( 'File is too large', 'bp-activity-plus-reloaded' ) );
+	    }
 
         $pathinfo = pathinfo($this->file->getName());
         $filename = strtolower($pathinfo['filename']);
         //$filename = md5(uniqid());
         $ext = strtolower($pathinfo['extension']);
 
-        if($this->allowedExtensions && !in_array(strtolower($ext), $this->allowedExtensions)){
-            $these = implode(', ', $this->allowedExtensions);
-            return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
-        }
+	    if ( $this->allowedExtensions && ! in_array( strtolower( $ext ), $this->allowedExtensions ) ) {
+		    $these = implode( ', ', $this->allowedExtensions );
+
+		    $error_message = sprintf( __( 'File has an invalid extension, it should be one of %s .', 'bp-activity-plus-reloaded' ), $these );
+
+		    return array( 'error' => $error_message );
+	    }
 
         if(!$replaceOldFile){
             /// don't overwrite previous files that were uploaded
@@ -146,12 +153,13 @@ class qqFileUploader {
         }
         $filename = sanitize_file_name($filename);
 
-        if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
-            return array('success'=>true, 'file'=> $filename . '.' . $ext);
-        } else {
-            return array('error'=> 'Could not save uploaded file.' .
-                'The upload was cancelled, or server error encountered');
-        }
+	    if ( $this->file->save( $uploadDirectory . $filename . '.' . $ext ) ) {
+		    return array( 'success' => true, 'file' => $filename . '.' . $ext );
+	    } else {
+		    return array(
+			    'error' => __( 'Could not save uploaded file. The upload was cancelled, or server error encountered', 'bp-activity-plus-reloaded' )
+		    );
+	    }
 
     }
 }

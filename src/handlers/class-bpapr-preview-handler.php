@@ -233,7 +233,7 @@ class BPAPR_Preview_Handler {
 		$response = wp_remote_get(
 			$url,
 			array(
-				'user-agent' => 'BuddyPress Activity Plus', // Some sites will block default WP UA.
+				'user-agent' => __( 'BuddyPress Activity Plus', 'bp-activity-plus-reloaded' ), // Some sites will block default WP UA.
 			)
 		);
 		if ( is_wp_error( $response ) ) {
