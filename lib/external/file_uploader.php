@@ -92,7 +92,7 @@ class qqFileUploader {
         if ($postSize < $this->sizeLimit || $uploadSize < $this->sizeLimit){
             $size = max(1, $this->sizeLimit / 1024 / 1024) . 'M';
 
-            $message = sprintf( 'increase post_max_size and upload_max_filesize to %s', $size );
+            $message = sprintf( __( 'increase post_max_size and upload_max_filesize to %s', 'bp-activity-plus-reloaded' ), $size );
 
 	        die( "{'error':$message}" );
         }
@@ -140,7 +140,7 @@ class qqFileUploader {
 	    if ( $this->allowedExtensions && ! in_array( strtolower( $ext ), $this->allowedExtensions ) ) {
 		    $these = implode( ', ', $this->allowedExtensions );
 
-		    $error_message = sprintf( 'File has an invalid extension, it should be one of %s .', $these );
+		    $error_message = sprintf( __( 'File has an invalid extension, it should be one of %s .', 'bp-activity-plus-reloaded' ), $these );
 
 		    return array( 'error' => $error_message );
 	    }
