@@ -11,7 +11,7 @@
 			:
 			bpapr_get_image_url($activity_blog_id) . trim($img)
 		;
-		$target = 'all' == BPFB_LINKS_TARGET ? 'target="_blank"' : '';
+		$target = 'all' == BPAPR_Data::get( 'link_target', 'same' ) ? 'target="_blank"' : '';
 		?>
 		<a href="<?php echo esc_url( bpapr_get_image_url($activity_blog_id) . trim($img)); ?>" class="<?php echo $use_thickbox; ?>" rel="<?php echo $rel;?>" <?php echo $target; ?> >
 			<img src="<?php echo esc_url($thumbnail);?>" />

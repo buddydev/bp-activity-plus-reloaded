@@ -139,7 +139,6 @@ class BPAPR_Activity_Plus_Reloaded {
 		// Only fire off if BP is actually loaded.
 		add_action( 'bp_loaded', array( $this, 'load' ) );
 
-		add_action( 'bp_loaded', array( $this, 'setup_constants' ) );
 		add_action( 'bp_loaded', array( $this, 'setup' ) );
 
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpapr-installer.php';
@@ -175,15 +174,6 @@ class BPAPR_Activity_Plus_Reloaded {
 		}
 
 		do_action( 'bpapr_loaded' );
-	}
-
-	/**
-	 * Setup constants.
-	 */
-	public function setup_constants() {
-		if ( ! defined( 'BPFB_LINKS_TARGET' ) ) {
-			define( 'BPFB_LINKS_TARGET', BPAPR_Data::get( 'link_target', 'same' ) );
-		}
 	}
 
 	/**
