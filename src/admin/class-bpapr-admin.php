@@ -208,7 +208,7 @@ class BPAPR_Admin {
 						<legend><?php _e( 'oEmbed', 'bp-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'bp-activity-plus-reloaded' ), BPFB_OEMBED_WIDTH ); ?></p>
+								<p><?php echo sprintf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'bp-activity-plus-reloaded' ), BPFB_OEMBED_WIDTH ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-oembed-width">
@@ -222,7 +222,7 @@ class BPAPR_Admin {
 						<legend><?php _e( 'Image thumbnails', 'bp-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'bp-activity-plus-reloaded' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
+								<p><?php echo sprintf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'bp-activity-plus-reloaded' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-thumbnail_size-width">
