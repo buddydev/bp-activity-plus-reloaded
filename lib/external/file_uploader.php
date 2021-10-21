@@ -114,7 +114,7 @@ class qqFileUploader {
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
         if (!is_writable($uploadDirectory)){
-	        $error_message = __( 'Server error. Upload directory isn\'t writable.', 'bp-activity-plus-reloaded' );
+	        $error_message = __( "Server error. Upload directory isn't writable.", 'bp-activity-plus-reloaded' );
             return array('error' => $error_message);
         }
 

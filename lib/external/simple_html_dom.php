@@ -324,7 +324,7 @@ class simple_html_dom_node
 
 		while (!is_null($ancestor)) {
 			if (is_object($debug_object)) {
-				$debug_object->debug_log(2, 'Current tag is: ' . $ancestor->tag);
+				$debug_object->debug_log(2, __('Current tag is: ', 'bp-activity-plus-reloaded') . $ancestor->tag);
 			}
 
 			if ($ancestor->tag === $tag) {
@@ -369,7 +369,7 @@ class simple_html_dom_node
 				}
 			}
 
-			$debug_object->debug_log(1, 'Innertext of tag: ' . $this->tag . $text);
+			$debug_object->debug_log(1, __('Innertext of tag: ', 'bp-activity-plus-reloaded') . $this->tag . $text);
 		}
 
 		if ($this->tag === 'root') {
@@ -727,13 +727,13 @@ class simple_html_dom_node
 
 					if (is_object($debug_object)) {
 						$debug_object->debug_log(2,
-							'testing node: '
+							__( 'testing node: ', 'bp-activity-plus-reloaded' )
 							. $node->tag
-							. ' for attribute: '
+							. __( ' for attribute: ', 'bp-activity-plus-reloaded' )
 							. $att_name
 							. $att_expr
 							. $att_val
-							. ' where nodes value is: '
+							. __( ' where nodes value is: ', 'bp-activity-plus-reloaded' )
 							. $nodeKeyValue
 						);
 					}
@@ -758,7 +758,7 @@ class simple_html_dom_node
 
 					if (is_object($debug_object)) {
 						$debug_object->debug_log(2,
-							'after match: '
+							__( 'after match: ', 'bp-activity-plus-reloaded' )
 							. ($check ? 'true' : 'false')
 						);
 					}
@@ -884,7 +884,7 @@ class simple_html_dom_node
 		);
 
 		if (is_object($debug_object)) {
-			$debug_object->debug_log(2, 'Matches Array: ', $matches);
+			$debug_object->debug_log(2, __( 'Matches Array: ', 'bp-activity-plus-reloaded' ), $matches);
 		}
 
 		$selectors = array();
@@ -1033,9 +1033,9 @@ class simple_html_dom_node
 
 		if (is_object($debug_object)) {
 			$debug_object->debug_log(3,
-				'source charset: '
+				__( 'source charset: ', 'bp-activity-plus-reloaded' )
 				. $sourceCharset
-				. ' target charaset: '
+				. __( ' target charaset: ', 'bp-activity-plus-reloaded' )
 				. $targetCharset
 			);
 		}
@@ -1209,7 +1209,7 @@ class simple_html_dom_node
 			}
 		} else {
 			if (is_object($debug_object)) {
-				$debug_object->debug_log(2, 'Invalid type: ', gettype($class));
+				$debug_object->debug_log(2, __( 'Invalid type: ', 'bp-activity-plus-reloaded' ), gettype($class));
 			}
 		}
 	}
@@ -1222,7 +1222,7 @@ class simple_html_dom_node
 			}
 		} else {
 			if (is_object($debug_object)) {
-				$debug_object->debug_log(2, 'Invalid type: ', gettype($class));
+				$debug_object->debug_log(2, __( 'Invalid type: ', 'bp-activity-plus-reloaded' ), gettype($class));
 			}
 		}
 
@@ -1694,7 +1694,7 @@ class simple_html_dom
 				$fullvalue = $el->content;
 				if (is_object($debug_object)) {
 					$debug_object->debug_log(2,
-						'meta content-type tag found'
+						__( 'meta content-type tag found', 'bp-activity-plus-reloaded' )
 						. $fullvalue
 					);
 				}
@@ -1714,7 +1714,7 @@ class simple_html_dom
 						// ISO-8859-1
 						if (is_object($debug_object)) {
 							$debug_object->debug_log(2,
-								'meta content-type tag couldn\'t be parsed. using iso-8859 default.'
+								__( "meta content-type tag couldn't be parsed. using iso-8859 default.", 'bp-activity-plus-reloaded' )
 							);
 						}
 
@@ -1729,7 +1729,7 @@ class simple_html_dom
 			if ($meta = $this->root->find('meta[charset]', 0)) {
 				$charset = $meta->charset;
 				if (is_object($debug_object)) {
-					$debug_object->debug_log(2, 'meta charset: ' . $charset);
+					$debug_object->debug_log( 2, __( 'meta charset: ', 'bp-activity-plus-reloaded' ) . $charset );
 				}
 			}
 		}
@@ -1780,7 +1780,7 @@ class simple_html_dom
 			// Assume it's UTF-8 as it is the most likely charset to be used
 			$charset = 'UTF-8';
 			if (is_object($debug_object)) {
-				$debug_object->debug_log(2, 'No match found, assume ' . $charset);
+				$debug_object->debug_log(2, __( 'No match found, assume ', 'bp-activity-plus-reloaded' ) . $charset);
 			}
 		}
 
@@ -1792,7 +1792,7 @@ class simple_html_dom
 			$charset = 'CP1252';
 			if (is_object($debug_object)) {
 				$debug_object->debug_log(2,
-					'replacing ' . $charset . ' with CP1252 as its a superset'
+					__( 'replacing ', 'bp-activity-plus-reloaded' ) . $charset . __( ' with CP1252 as its a superset', 'bp-activity-plus-reloaded' )
 				);
 			}
 		}
@@ -2205,7 +2205,7 @@ class simple_html_dom
 			$key = '___noise___' . sprintf('% 5d', count($this->noise) + 1000);
 
 			if (is_object($debug_object)) {
-				$debug_object->debug_log(2, 'key is: ' . $key);
+				$debug_object->debug_log(2, __( 'key is: ', 'bp-activity-plus-reloaded' ) . $key);
 			}
 
 			$idx = ($remove_tag) ? 0 : 1; // 0 = entire match, 1 = submatch
@@ -2242,7 +2242,7 @@ class simple_html_dom
 				       . $text[$pos + 15];
 
 				if (is_object($debug_object)) {
-					$debug_object->debug_log(2, 'located key of: ' . $key);
+					$debug_object->debug_log(2, __( 'located key of: ', 'bp-activity-plus-reloaded' ) . $key);
 				}
 
 				if (isset($this->noise[$key])) {
