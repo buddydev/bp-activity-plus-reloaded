@@ -154,7 +154,7 @@ class BPAPR_Admin {
 			<form action="" method="POST">
 
 				<fieldset class="appearance section">
-					<legend><?php esc_html_e( 'Appearance', 'bp-activity-plus-reloaded' ); ?></legend>
+					<legend><?php _e( 'Appearance', 'bp-activity-plus-reloaded' ); ?></legend>
 
 					<?php if ( current_theme_supports( 'bpfb_interface_style' ) || current_theme_supports( 'bpfb_toolbar_icons' ) ) { ?>
 						<div class="updated below-h2">
@@ -163,76 +163,76 @@ class BPAPR_Admin {
 					<?php } ?>
 
 					<fieldset class="theme option">
-						<legend><?php esc_html_e( 'Theme', 'bp-activity-plus-reloaded' ); ?></legend>
+						<legend><?php _e( 'Theme', 'bp-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-theme-default">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-legacy.png"/>
 							<input type="radio" id="bpfb-theme-default" name="bpfb[theme]"
 								   value="" <?php checked( $theme, '' ); ?> />
-							<?php esc_html_e( 'Default (legacy)', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Default (legacy)', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-new">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-new.png"/>
 							<input type="radio" id="bpfb-theme-new" name="bpfb[theme]"
 								   value="new" <?php checked( $theme, 'new' ); ?> />
-							<?php esc_html_e( 'New', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'New', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-round">
 							<img src="<?php echo BPFB_PLUGIN_URL; ?>/assets/img/system/theme-round.png"/>
 							<input type="radio" id="bpfb-theme-round" name="bpfb[theme]"
 								   value="round" <?php checked( $theme, 'round' ); ?> />
-							<?php esc_html_e( 'Round', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Round', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 
 
                     <fieldset class="alignment option">
-						<legend><?php esc_html_e( 'Alignment', 'bp-activity-plus-reloaded' ); ?></legend>
+						<legend><?php _e( 'Alignment', 'bp-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-theme-alignment-left">
 							<input type="radio" id="bpfb-theme-alignment-left" name="bpfb[alignment]"
 								   value="left" <?php checked( $alignment, 'left' ); ?> />
-							<?php esc_html_e( 'Left', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Left', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 						<label for="bpfb-theme-alignment-right">
 							<input type="radio" id="bpfb-theme-alignment-right" name="bpfb[alignment]"
 								   value="right" <?php checked( $alignment, 'right' ); ?> />
-							<?php esc_html_e( 'Right', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Right', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 				</fieldset>
 
 
 				<fieldset class="functional section">
-					<legend><?php esc_html_e( 'Functional', 'bp-activity-plus-reloaded' ); ?></legend>
+					<legend><?php _e( 'Functional', 'bp-activity-plus-reloaded' ); ?></legend>
 
 					<fieldset class="oembed option">
-						<legend><?php esc_html_e( 'oEmbed', 'bp-activity-plus-reloaded' ); ?></legend>
+						<legend><?php _e( 'oEmbed', 'bp-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'bp-activity-plus-reloaded' ), BPFB_OEMBED_WIDTH ); ?></p>
+								<p><?php echo sprintf( __( 'Your oEmbed dimensions will be dictated by the <code>BPFB_OEMBED_WIDTH</code> define value (%s). Remove this define to enable this option.', 'bp-activity-plus-reloaded' ), BPFB_OEMBED_WIDTH ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-oembed-width">
-							<?php esc_html_e( 'Width', 'bp-activity-plus-reloaded' ) ?>
+							<?php _e( 'Width', 'bp-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-oembed-width" name="bpfb[oembed_width]" size="4"
 								   value="<?php echo (int) $oembed_width; ?>" <?php echo( defined( 'BPFB_OEMBED_WIDTH' ) ? 'disabled="disabled"' : '' ); ?> />
 							px
 						</label>
 					</fieldset>
 					<fieldset class="thumbnail option">
-						<legend><?php esc_html_e( 'Image thumbnails', 'bp-activity-plus-reloaded' ); ?></legend>
+						<legend><?php _e( 'Image thumbnails', 'bp-activity-plus-reloaded' ); ?></legend>
 						<?php if ( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ) { ?>
 							<div class="updated below-h2">
-								<p><?php printf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'bp-activity-plus-reloaded' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
+								<p><?php echo sprintf( __( 'Your thumbnail dimensions will be dictated by the <code>BPFB_THUMBNAIL_IMAGE_SIZE</code> define value (%s). Remove this define to enable these options.', 'bp-activity-plus-reloaded' ), BPFB_THUMBNAIL_IMAGE_SIZE ); ?></p>
 							</div>
 						<?php } ?>
 						<label for="bpfb-thumbnail_size-width">
-							<?php esc_html_e( 'Width', 'bp-activity-plus-reloaded' ) ?>
+							<?php _e( 'Width', 'bp-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-thumbnail_size-width" name="bpfb[thumbnail_size_width]" size="4"
 								   value="<?php echo (int) $thumb_w; ?>" <?php echo( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ? 'disabled="disabled"' : '' ); ?> />
 							px
 						</label>
 						<label for="bpfb-thumbnail_size-height">
-							<?php esc_html_e( 'Height', 'bp-activity-plus-reloaded' ) ?>
+							<?php _e( 'Height', 'bp-activity-plus-reloaded' ) ?>
 							<input type="text" id="bpfb-thumbnail_size-height" name="bpfb[thumbnail_size_height]"
 								   size="4"
 								   value="<?php echo (int) $thumb_h; ?>" <?php echo( defined( 'BPFB_THUMBNAIL_IMAGE_SIZE' ) ? 'disabled="disabled"' : '' ); ?> />
@@ -241,7 +241,7 @@ class BPAPR_Admin {
 					</fieldset>
 
                     <fieldset class="bpfb-link option">
-                        <legend><?php esc_html_e( 'Link', 'bp-activity-plus-reloaded' ); ?></legend>
+                        <legend><?php _e( 'Link', 'bp-activity-plus-reloaded' ); ?></legend>
                         <label for="bpfb-link_target"> <?php _e( 'Link Target', 'bp-activity-plus-reloaded' );?>
                             <select name="bpfb[link_target]">
 	                            <option value="same" <?php selected('same', $link_target );?>><?php _e( 'Same Window', 'bp-activity-plus-reloaded' );?></option>
@@ -251,37 +251,37 @@ class BPAPR_Admin {
                     </fieldset>
 
 					<fieldset class="bpfb-misc option">
-						<legend><?php esc_html_e( 'Misc', 'bp-activity-plus-reloaded' ); ?></legend>
+						<legend><?php _e( 'Misc', 'bp-activity-plus-reloaded' ); ?></legend>
 						<label for="bpfb-cleanup_images">
 							<input type="checkbox" id="bpfb-cleanup_images" name="bpfb[cleanup_images]"
 								   value="1" <?php checked( $cleanup_images, true ); ?> />
-							<?php esc_html_e( 'Clean up images?', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Clean up images?', 'bp-activity-plus-reloaded' ); ?>
 						</label>
 					</fieldset>
 
                     <fieldset class="bpfb-allowed-items option">
-                        <legend><?php esc_html_e( 'Allowed Items', 'bp-activity-plus-reloaded' ); ?></legend>
+                        <legend><?php _e( 'Allowed Items', 'bp-activity-plus-reloaded' ); ?></legend>
                         <label for="bpfb-allowed_items_photos">
                             <input type="checkbox" id="bpfb-allowed_items_photos" name="bpfb[allowed_items][]"
                                    value="photos" <?php checked( in_array( 'photos', $allowed_items ), true ); ?> />
-							<?php esc_html_e( 'Photos', 'bp-activity-plus-reloaded' ); ?>
+							<?php _e( 'Photos', 'bp-activity-plus-reloaded' ); ?>
                         </label>
                         <label for="bpfb-allowed_items_videos">
                             <input type="checkbox" id="bpfb-allowed_items_videos" name="bpfb[allowed_items][]"
                                    value="videos" <?php checked( in_array( 'videos', $allowed_items ), true ); ?> />
-		                    <?php esc_html_e( 'Videos', 'bp-activity-plus-reloaded' ); ?>
+		                    <?php _e( 'Videos', 'bp-activity-plus-reloaded' ); ?>
                         </label>
                         <label for="bpfb-allowed_items_links">
                             <input type="checkbox" id="bpfb-allowed_items_links" name="bpfb[allowed_items][]"
                                    value="links" <?php checked( in_array( 'links', $allowed_items ), true ); ?> />
-		                    <?php esc_html_e( 'Links', 'bp-activity-plus-reloaded' ); ?>
+		                    <?php _e( 'Links', 'bp-activity-plus-reloaded' ); ?>
                         </label>
                     </fieldset>
 				</fieldset>
 
 				<p>
 					<?php wp_nonce_field( $this->_page_hook ); ?>
-					<button class="button button-primary"><?php esc_html_e( 'Save' ); ?></button>
+					<button class="button button-primary"><?php _e( 'Save', 'bp-activity-plus-reloaded' ); ?></button>
 				</p>
 			</form>
 		</div>
