@@ -544,7 +544,9 @@ if (
 */
 		// Meh, just do it - newish Droids seem to work fine.
 		if ( $( '#whats-new-form' ).is( ':visible' ) ) {
-			setup();
+			if( typeof BPAPRJSData.show_upload_buttons !="undefined" && parseInt(BPAPRJSData.show_upload_buttons, 10) > 0 ){
+				setup();
+			}
 		}
 
 		/**

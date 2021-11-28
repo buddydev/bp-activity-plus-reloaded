@@ -55,7 +55,8 @@ class BPAPR_Assets_Loader {
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_script( 'bp-activity-plus-reloaded' );
 
-		wp_localize_script( 'bp-activity-plus-reloaded', 'BPAPRJSData', $this->data );
+		$data = (array) apply_filters( 'bpapr_localizable_data', $this->data );
+		wp_localize_script( 'bp-activity-plus-reloaded', 'BPAPRJSData', $data );
 
 		wp_enqueue_style( 'thickbox' );
 		wp_enqueue_style( 'bp-activity-plus-reloaded-uploader' );
@@ -115,10 +116,11 @@ class BPAPR_Assets_Loader {
 			'paste_video_url'          => __( 'Paste video URL here', 'bp-activity-plus-reloaded' ),
 			'paste_link_url'           => __( 'Paste link here', 'bp-activity-plus-reloaded' ),
 			'images_limit_exceeded'    => sprintf( __( "You tried to add too many images, only %d will be posted.", 'bp-activity-plus-reloaded' ), BPFB_IMAGE_LIMIT ),
-			// Variables
+			// Variables.
 			'_max_images'              => BPFB_IMAGE_LIMIT,
 			'isGroup'                  => bp_is_group() ? 1 : 0,
 			'groupID'                  => bp_is_group() ? bp_get_current_group_id() : 0,
+			'show_upload_buttons'      => 1,
 		);
 
 	}
