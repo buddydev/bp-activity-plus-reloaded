@@ -49,10 +49,19 @@ if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
 }
 
 $wp_upload_dir = wp_upload_dir();
-define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
-define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
-define( 'BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/' );
-define( 'BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/' );
+
+if ( ! defined( 'BPFB_TEMP_IMAGE_DIR' ) ) {
+	define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
+}
+if ( ! defined( 'BPFB_TEMP_IMAGE_URL' ) ) {
+	define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
+}
+if ( ! defined( 'BPFB_BASE_IMAGE_DIR' ) ) {
+	define( 'BPFB_BASE_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/' );
+}
+if ( ! defined( 'BPFB_BASE_IMAGE_URL' ) ) {
+	define( 'BPFB_BASE_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/' );
+}
 
 /**
  * Helper.
