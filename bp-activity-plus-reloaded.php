@@ -3,7 +3,7 @@
  * Plugin Name: Activity Plus Reloaded for BuddyPress
  * Plugin URI: https://buddydev.com/plugins/bp-activity-plus-reloaded/
  * Description: A Facebook-style media sharing improvement for the activity box.
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
@@ -43,11 +43,6 @@ define( 'BPFB_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 load_plugin_textdomain( 'bp-activity-plus-reloaded', false, BPFB_PLUGIN_SELF_DIRNAME . '/languages/' );
 
-// Override image limit in wp-config.php.
-if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
-	define( 'BPFB_IMAGE_LIMIT', 5 );
-}
-
 $wp_upload_dir = wp_upload_dir();
 define( 'BPFB_TEMP_IMAGE_DIR', $wp_upload_dir['basedir'] . '/bpfb/tmp/' );
 define( 'BPFB_TEMP_IMAGE_URL', $wp_upload_dir['baseurl'] . '/bpfb/tmp/' );
@@ -69,7 +64,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.8';
+	private $version = '1.0.9';
 
 	/**
 	 * Class instance
@@ -137,12 +132,24 @@ class BPAPR_Activity_Plus_Reloaded {
 		$this->basename = plugin_basename( __FILE__ );
 
 		// Only fire off if BP is actually loaded.
+		add_action( 'bp_loaded', array( $this, 'setup_constants' ) );
+
 		add_action( 'bp_loaded', array( $this, 'load' ) );
 
 		add_action( 'bp_loaded', array( $this, 'setup' ) );
 
 		require_once BPFB_PLUGIN_BASE_DIR . '/src/installer/class-bpapr-installer.php';
 		register_activation_hook( __FILE__, array( 'BPAPR_Installer', 'install' ) );
+	}
+
+	/**
+	 * Sets up functionality constants.
+	 */
+	public function setup_constants() {
+		// Override image limit in wp-config.php.
+		if ( ! defined( 'BPFB_IMAGE_LIMIT' ) ) {
+			define( 'BPFB_IMAGE_LIMIT', 5 );
+		}
 	}
 
 	/**
