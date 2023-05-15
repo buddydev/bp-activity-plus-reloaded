@@ -3,7 +3,7 @@
  * Plugin Name: Activity Plus Reloaded for BuddyPress
  * Plugin URI: https://buddydev.com/plugins/bp-activity-plus-reloaded/
  * Description: A Facebook-style media sharing improvement for the activity box.
- * Version: 1.0.9
+ * Version: 1.1.0
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  *
@@ -64,7 +64,7 @@ class BPAPR_Activity_Plus_Reloaded {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.9';
+	private $version = '1.1.0';
 
 	/**
 	 * Class instance
