@@ -3,8 +3,8 @@ Contributors: buddydev
 Original Contributors: wpmudev
 Tags: BuddyPress, Activity Stream, BuddyPress Activity, BuddyPress Activity Upload, Embed Video, Embed Link, Upload Photo, Upload Photos, Share Media, Sharing Media, Social Media
 Requires at least: 5.0
-Tested up to: 5.8.2
-Stable tag: 1.0.8
+Tested up to: 6.2
+Stable tag: 1.0.9
 
 Activity Plus Reloaded for BuddyPress allows embedding of oEmbed videos and media as well as external links in your activities.
 
@@ -27,7 +27,7 @@ Blog Post :[Introducing BuddyPress Activity Plus Reloaded](https://buddydev.com/
 = Credit =
 Activity Plus Reloaded for BuddyPress is a fork of *BuddyPress Activity Plus*(now abandoned) by @wpmudev. We have refactored it to wok with current BuddyPress/WordPress.
  and we plan to maintain and further develop it.
- We will like to express our sincere gratitude to the @wpmudv team for their cooperation in getting this plugin back.
+ We would like to express our sincere gratitude to the @wpmudv team for their cooperation in getting this plugin back.
 
 If you are looking to optimize media, We recommend [Smush](https://wordpress.org/plugins/wp-smushit/) to optimize your BuddyPress media.
 
@@ -63,6 +63,9 @@ Yes. Until the media feature comes to BuddyPress core, we will maintain and deve
 3. Video in your activity stream screenshot-3.png
 
 == Changelog ==
+= 1.0.9 =
+- Made the constant BPFB_IMAGE_LIMIT feasible from bp-custom.php
+
 = 1.0.8 =
 - Add flag for disabling the upload form.
 

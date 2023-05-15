@@ -4,16 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Activity Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-21 15:02+0530\n"
-"PO-Revision-Date: 2021-10-21 15:02+0530\n"
+"POT-Creation-Date: 2023-05-15 23:15+0530\n"
+"PO-Revision-Date: 2023-05-15 23:15+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _e;_ex:1,2c;__;sprintf;esc_html;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -160,75 +160,75 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:100
+#: src/bootstrap/class-bpapr-assets-loader.php:101
 msgid "Add images"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:101
+#: src/bootstrap/class-bpapr-assets-loader.php:102
 msgid "Submit images post"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:102
+#: src/bootstrap/class-bpapr-assets-loader.php:103
 msgid "Add image URL"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:103
+#: src/bootstrap/class-bpapr-assets-loader.php:104
 msgid "Add another image URL"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:104
+#: src/bootstrap/class-bpapr-assets-loader.php:105
 msgid "Add videos"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:105
+#: src/bootstrap/class-bpapr-assets-loader.php:106
 msgid "Submit video post"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:106
+#: src/bootstrap/class-bpapr-assets-loader.php:107
 msgid "Add links"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:107
+#: src/bootstrap/class-bpapr-assets-loader.php:108
 msgid "Submit link post"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:108
+#: src/bootstrap/class-bpapr-assets-loader.php:109
 msgid "Add"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:109
+#: src/bootstrap/class-bpapr-assets-loader.php:110
 msgid "Cancel"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:110
+#: src/bootstrap/class-bpapr-assets-loader.php:111
 msgid "Preview"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:111
+#: src/bootstrap/class-bpapr-assets-loader.php:112
 msgid "Drop files here to upload"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:112
+#: src/bootstrap/class-bpapr-assets-loader.php:113
 msgid "Upload a file"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:113
+#: src/bootstrap/class-bpapr-assets-loader.php:114
 msgid "Choose thumbnail"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:114
+#: src/bootstrap/class-bpapr-assets-loader.php:115
 msgid "No thumbnail"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:115
+#: src/bootstrap/class-bpapr-assets-loader.php:116
 msgid "Paste video URL here"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:116
+#: src/bootstrap/class-bpapr-assets-loader.php:117
 msgid "Paste link here"
 msgstr ""
 
-#: src/bootstrap/class-bpapr-assets-loader.php:117
+#: src/bootstrap/class-bpapr-assets-loader.php:118
 #, php-format
 msgid "You tried to add too many images, only %d will be posted."
 msgstr ""
