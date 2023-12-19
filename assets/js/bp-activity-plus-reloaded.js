@@ -491,6 +491,8 @@ var _bpfbActiveHandler = false;
 				$postBox = $( '#whats-new-textarea #whats-new' ).first();
 				var $stream = $( '#activity-stream' ),
 					$list = $stream.find( '.activity-list' );
+				var $this = $(this);
+
 				params = _bpfbActiveHandler.get();
 				if ( $postBox.is( 'textarea' ) ) {
 					content = $postBox.val();
@@ -504,13 +506,27 @@ var _bpfbActiveHandler = false;
 					content = '';
 				}
 
-				groupID = $( '#whats-new-post-in' ).length ? $( '#whats-new-post-in' ).val() : BPAPRJSData.groupID;
-				$.post( ajaxurl, {
+				groupID = $('#whats-new-post-in').length ? $('#whats-new-post-in').val() : BPAPRJSData.groupID;
+				$.post(ajaxurl, {
 					action: 'bpfb_update_activity_contents',
 					data: params,
 					content: content,
 					group_id: groupID
-				}, function( data ) {
+				}, function (data) {
+
+					if (data.hasOwnProperty('success') && !data.success) {
+						var $action_container = $this.parents('.bpfb_action_container'),
+							$feedback = $action_container.find('p.bpfb_feedback');
+
+						if (!$feedback.length) {
+							$action_container.prepend('<p class="bpfb_feedback"></p>');
+							$feedback = $action_container.find('p.bpfb_feedback');
+						}
+
+						$feedback.text(data.data.message);
+						return;
+					}
+
 					_bpfbActiveHandler.destroy();
 					// reset content.
 					if ( $postBox.is( 'textarea' ) ) {
