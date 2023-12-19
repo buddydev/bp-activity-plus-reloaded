@@ -307,7 +307,13 @@ var _bpfbActiveHandler = false;
 					if ( $( '#bpfb_tmp_photo' ).is( ':visible' ) ) {
 						$( '#bpfb_tmp_photo' ).hide();
 					}
-					$( '#bpfb_add_remote_image' ).val( BPAPRJSData.add_another_remote_image );
+
+					if ( $( '.bpfb_remote_image' ).length < parseInt( BPAPRJSData._max_images, 10 ) ) {
+						$( '#bpfb_add_remote_image' ).val( BPAPRJSData.add_another_remote_image );
+					} else {
+						$( '#bpfb_add_remote_image' ).hide();
+					}
+
 					$( '#bpfb_remote_image_container' ).append(
 						'<input type="text" class="bpfb_remote_image" size="64" value="" /><br />'
 					);
