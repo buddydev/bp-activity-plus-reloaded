@@ -238,11 +238,13 @@ class BPAPR_Documents {
 			$uploaded[] = '<a href="' . $doc->get_url() . '">' . esc_attr( $doc->name ) . '</a>';
 		}
 
+		$group_url = function_exists( 'bp_get_group_url' ) ? bp_get_group_url( $group ) : bp_get_group_permalink( $group );
+
 		return sprintf(
 			__( '%s uploaded new file(s): %s to %s', 'bp-activity-plus-reloaded' ),
 			bp_core_get_userlink( $bp->loggedin_user->id ),
 			join( ', ', $uploaded ),
-			'<a href="' . bp_get_group_permalink( $group ) . '">' . bp_get_group_name( $group ) . '</a>'
+			'<a href="' . $group_url . '">' . bp_get_group_name( $group ) . '</a>'
 		);
 	}
 
